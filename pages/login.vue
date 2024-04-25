@@ -3,7 +3,7 @@
     class="bg-jdm-background flex h-screen items-center justify-center bg-cover bg-fixed bg-center bg-no-repeat"
   >
     <div
-      class="isolate mx-auto w-1/4 flex-col justify-center gap-y-8 rounded-3xl bg-black/20 py-20 text-center shadow-lg ring-2 ring-black/5 backdrop-blur-2xl"
+      class="isolate mx-auto w-1/4 flex-col justify-center gap-y-8 rounded-3xl bg-black/30 py-20 text-center shadow-lg ring-2 ring-black/10 backdrop-blur-sm"
     >
       <div class="py-4 text-center">
         <div class="text-[40px] font-bold text-white">
@@ -36,7 +36,7 @@
         <div class="mt-12 text-center">
           <button
             @click="signIn"
-            class="btn glass w-full max-w-xs bg-yellow-500 text-white hover:bg-yellow-400 hover:text-black"
+            class="btn glass w-full max-w-xs bg-primary hover:bg-primary-hover text-secondary hover:text-black"
           >
             Sign In
           </button>
@@ -60,8 +60,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 
-const email = ref("");
-const password = ref("");
+const email = ref("snepysneptest@gmail.com");
+const password = ref("mihnea123");
 const client = useSupabaseClient();
 
 const signIn = async () => {
@@ -69,6 +69,17 @@ const signIn = async () => {
     email: email.value,
     password: password.value,
   });
-  navigateTo("/notes");
+  navigateTo("/");
 };
 </script>
+
+<style scoped>
+.divider:before,
+.divider:after {
+  @apply bg-white h-px;
+}
+
+input:focus {
+  @apply outline-primary;
+}
+</style>
