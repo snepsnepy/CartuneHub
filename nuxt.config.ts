@@ -16,4 +16,5 @@ export default defineNuxtConfig({
       SUPABASE_KEY: process.env.SUPABASE_KEY,
     },
   },
+  css: ["@/assets/css/main.css"],
 });

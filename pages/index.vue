@@ -1,5 +1,7 @@
 <template>
-  <div>
+  <section
+    class="bg-jdm-background flex h-screen items-center justify-center bg-cover bg-fixed bg-center bg-no-repeat"
+  >
     <h1>Main page</h1>
     <input
       type="text"
@@ -9,7 +11,7 @@
     />
     <button class="btn primary" v-if="user" @click="signOut">Logout</button>
     <button class="btn primary" @click="insertRow">INSERT</button>
-  </div>
+  </section>
 </template>
 
 <script lang="ts" setup>

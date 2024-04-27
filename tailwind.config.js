@@ -13,6 +13,9 @@ module.exports = {
         "secondary-content": "#ff0054",
         "base-content": "#fff",
       },
+      fontFamily: {
+        mukta: ["Mukta", "sans-serif"],
+      },
     },
   },
 };
