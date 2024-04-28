@@ -1,24 +1,14 @@
 <template>
-  <button
-    @click="props.onClick"
-    :class="{
-      'btn border-0 w-full rounded-full max-w-xs bg-primary hover:bg-primary-hover text-secondary hover:text-black':
-        props.type === 'primary',
-      'btn-default btn rounded-full btn-outline w-full max-w-xs text-white hover:bg-white':
-        props.type === 'secondary',
-    }"
-  >
-    <Icon v-if="props.iconName" :name="props.iconName" />
-    {{ props.text }}
+  <button @click="onClick" :class="class">
+    <Icon v-if="iconName" :name="iconName" />
+    {{ text }}
   </button>
 </template>
 
 <script setup lang="ts">
-import type { ButtonType } from "@/types/components/Button.ts";
-
-const props = defineProps<{
+defineProps<{
   text?: string;
-  type: ButtonType;
+  class?: string;
   iconName?: string;
   onClick?: () => void;
 }>();

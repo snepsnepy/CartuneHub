@@ -1,54 +1,53 @@
 <template>
-  <section
-    class="bg-jdm-background flex h-screen items-center justify-center bg-cover bg-fixed bg-center bg-no-repeat"
+  <div
+    class="isolate mx-10 max-w-fit-content px-10 flex-col justify-center space-y-12 rounded-3xl bg-black/30 py-12 text-center shadow-lg ring-2 ring-black/10 backdrop-blur-sm"
   >
-    <div
-      class="isolate mx-10 max-w-fit-content px-10 flex-col justify-center gap-y-8 rounded-3xl bg-black/30 py-8 sm:py-20 text-center shadow-lg ring-2 ring-black/10 backdrop-blur-sm"
-    >
-      <div class="text-center">
-        <div class="text-[40px] font-bold text-white mb-4">
-          Login to your account
-        </div>
-      </div>
-      <div class="px-4">
-        <label class="form-control m-auto flex w-full max-w-xs justify-center">
-          <div class="label">
-            <span class="label-text text-white">Email</span>
-          </div>
-          <input
-            type="text"
-            v-model="email"
-            placeholder="Type your email"
-            class="input rounded-full input-bordered w-full max-w-xs bg-white text-black"
-          />
-        </label>
-        <label class="form-control m-auto flex w-full max-w-xs justify-center">
-          <div class="label">
-            <span class="label-text text-white">Password</span>
-          </div>
-          <input
-            type="password"
-            v-model="password"
-            placeholder="Type your password"
-            class="input rounded-full input-bordered w-full max-w-xs bg-white text-black"
-          />
-        </label>
-        <div class="mt-12 text-center">
-          <Button type="primary" text="Sign In" :on-click="signIn" />
-          <div
-            class="divider m-auto my-4 flex w-full max-w-xs justify-center text-center text-white"
-          >
-            or
-          </div>
-          <Button
-            type="secondary"
-            text="Sign In with Google"
-            icon-name="devicon:google"
-          />
-        </div>
+    <div class="text-center">
+      <div class="text-[42px] font-bold text-white mb-4">
+        Login to your account
       </div>
     </div>
-  </section>
+
+    <!-- Input Fields -->
+    <div>
+      <div class="space-y-4">
+        <Input
+          type="text"
+          v-model="email"
+          label="Email"
+          placeholder="Type your email"
+          class="input rounded-full input-bordered w-full bg-white text-black"
+        />
+
+        <Input
+          type="password"
+          v-model="password"
+          label="Password"
+          placeholder="Type your password"
+          class="input rounded-full input-bordered w-full bg-white text-black"
+        />
+      </div>
+
+      <!-- Buttons -->
+      <div class="mt-12 text-center">
+        <Button
+          class="btn border-0 w-full rounded-full bg-primary hover:bg-primary-hover text-secondary hover:text-black"
+          type="primary"
+          text="Sign In"
+          :on-click="signIn"
+        />
+        <div class="divider flex w-full justify-center text-center text-white">
+          or
+        </div>
+        <Button
+          class="btn-default btn rounded-full btn-outline w-full text-white hover:bg-white"
+          type="secondary"
+          text="Sign In with Google"
+          icon-name="devicon:google"
+        />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -71,9 +70,5 @@ const signIn = async () => {
 .divider:before,
 .divider:after {
   @apply bg-white h-px;
-}
-
-input:focus {
-  @apply outline-primary;
 }
 </style>
