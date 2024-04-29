@@ -1,6 +1,6 @@
 <template>
   <div
-    class="isolate mx-10 w-1/3 px-10 flex-col justify-center space-y-12 rounded-2xl bg-black/30 py-12 text-center shadow-lg ring-2 ring-black/10 backdrop-blur-sm"
+    class="isolate mx-10 w-1/3 px-10 flex-col justify-center space-y-12 rounded-2xl bg-base-content/10 py-12 text-center shadow-lg ring-2 ring-base-content/10 backdrop-blur-sm"
   >
     <div class="text-center">
       <div class="text-4xl font-bold text-base-content mb-4">
@@ -14,7 +14,7 @@
       <div class="space-y-4">
         <Input
           type="text"
-          v-model="email"
+          v-model:value="email"
           label="Email"
           placeholder="Type your email"
           class="input rounded-2xl input-bordered w-full bg-white text-black"
@@ -22,7 +22,7 @@
 
         <Input
           type="password"
-          v-model="password"
+          v-model:value="password"
           label="Password"
           placeholder="Type your password"
           class="input rounded-2xl input-bordered w-full bg-white text-black"
@@ -32,7 +32,7 @@
       <!-- Buttons -->
       <div class="mt-12 text-center">
         <Button
-          class="btn border-0 w-full rounded-2xl bg-primary hover:bg-primary-hover text-secondary hover:text-black"
+          class="btn border-0 w-full rounded-2xl bg-primary hover:bg-primary-hover text-black hover:text-black"
           text="Sign In"
           :on-click="signIn"
         />

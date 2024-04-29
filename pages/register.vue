@@ -1,6 +1,6 @@
 <template>
   <div
-    class="isolate mx-10 w-1/3 px-10 flex-col justify-center space-y-12 rounded-2xl bg-black/30 py-12 text-center shadow-lg ring-2 ring-black/10 backdrop-blur-sm"
+    class="isolate mx-10 w-1/3 px-10 flex-col justify-center space-y-12 rounded-2xl bg-base-content/10 py-12 text-center shadow-lg ring-2 ring-base-content/10 backdrop-blur-sm"
   >
     <div class="text-center">
       <div class="text-4xl font-bold text-base-content mb-4">

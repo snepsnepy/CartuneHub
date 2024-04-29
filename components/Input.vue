@@ -13,7 +13,7 @@
 <script setup lang="ts">
 const emit = defineEmits(["update:value"]);
 
-defineProps<{
+const props = defineProps<{
   type?: string;
   class?: string;
   value?: string;
@@ -21,13 +21,13 @@ defineProps<{
   label?: string;
 }>();
 
-const modelValue = ref();
+const modelValue = ref(props.value);
 
 watch(modelValue, () => emit("update:value", modelValue.value));
 </script>
 
 <style scoped>
 input:focus {
-  @apply outline-primary;
+  @apply outline-primary-hover;
 }
 </style>

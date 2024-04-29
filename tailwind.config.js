@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "jdm-background": "url('/public/img/background.png')",
+        "jdm-background": "url('/public/img/background2.png')",
       },
       colors: {
         primary: "#ffbd00",
