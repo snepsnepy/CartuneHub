@@ -1,62 +1,65 @@
 <template>
   <div
-    class="isolate mx-auto w-1/4 flex-col justify-center gap-y-8 rounded-3xl bg-black/30 py-20 text-center shadow-lg ring-2 ring-black/10 backdrop-blur-sm"
+    class="isolate mx-10 w-1/3 px-10 flex-col justify-center space-y-12 rounded-2xl bg-black/30 py-12 text-center shadow-lg ring-2 ring-black/10 backdrop-blur-sm"
   >
-    <div class="py-4 text-center">
-      <div class="text-[40px] font-bold text-white">Create account</div>
-      <p class="text-white/80">Start selling parts today!</p>
+    <div class="text-center">
+      <div class="text-4xl font-bold text-base-content mb-4">
+        Create account
+      </div>
     </div>
-    <div class="px-4">
-      <label class="form-control m-auto flex w-full max-w-xs justify-center">
-        <div class="label">
-          <span class="label-text text-white">Full name</span>
-        </div>
-        <input
+
+    <div>
+      <!-- Input Fields -->
+      <div class="space-y-4">
+        <Input
           type="text"
           placeholder="Type your full name"
-          class="input input-bordered w-full max-w-xs bg-white text-black"
+          label="Full Name"
+          class="input rounded-2xl input-bordered w-full bg-base-content text-black"
         />
-      </label>
-      <label class="form-control m-auto flex w-full max-w-xs justify-center">
-        <div class="label">
-          <span class="label-text text-white">Email</span>
-        </div>
-        <input
+        <Input
           type="text"
-          v-model="email"
           placeholder="Type your email"
-          class="input input-bordered w-full max-w-xs bg-white text-black"
+          v-model:value="email"
+          label="Email"
+          class="input rounded-2xl input-bordered w-full bg-base-content text-black"
         />
-      </label>
-      <label class="form-control m-auto flex w-full max-w-xs justify-center">
-        <div class="label">
-          <span class="label-text text-white">Password</span>
-        </div>
-        <input
+
+        <Input
           type="password"
-          v-model="password"
-          placeholder="Type your password"
-          class="input input-bordered w-full max-w-xs bg-white text-black"
+          placeholder="Password"
+          v-model:value="password"
+          label="Password"
+          class="input rounded-2xl input-bordered w-full bg-base-content text-black"
         />
-      </label>
-      <div class="mt-8 text-center">
-        <button
-          @click="signUp"
-          class="btn glass w-full max-w-xs bg-primary hover:bg-primary-hover text-black"
-        >
-          Create account
-        </button>
+      </div>
+
+      <!-- Buttons -->
+      <div class="mt-12 text-center">
+        <Button
+          text="Create Account"
+          class="btn border-0 w-full rounded-2xl bg-primary hover:bg-primary-hover text-secondary hover:text-black"
+          :on-click="signUp"
+        />
         <div
-          class="divider m-auto my-4 flex w-full max-w-xs justify-center text-center text-white"
+          class="divider m-auto my-4 flex w-full justify-center text-center text-base-content"
         >
           or
         </div>
-        <button
-          class="btn btn-outline w-full max-w-xs text-white hover:bg-white border bg-transparent hover:text-black"
-        >
-          <Icon name="devicon:google" />
-          Sign up with Google
-        </button>
+
+        <Button
+          class="btn-default btn rounded-2xl btn-outline w-full text-base-content hover:bg-base-content"
+          text="Sign Up with Google"
+          icon-name="devicon:google"
+        />
+      </div>
+
+      <!-- Bottom message -->
+      <div class="mt-12 text-center">
+        <p class="text-base-content">
+          Already have an account?
+          <a href="/login" class="text-primary">Sign In</a>.
+        </p>
       </div>
     </div>
   </div>
@@ -69,20 +72,22 @@ const email = ref("");
 const password = ref("");
 const client = useSupabaseClient();
 
-definePageMeta({
-  middleware: "auth",
-});
-
 const signUp = async () => {
   await client.auth.signUp({
     email: email.value,
     password: password.value,
   });
+  navigateTo("/");
 };
 </script>
 
 <style scoped>
 input:focus {
   @apply outline-primary;
+}
+
+.divider:before,
+.divider:after {
+  @apply bg-base-content h-px;
 }
 </style>

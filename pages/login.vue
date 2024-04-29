@@ -1,11 +1,12 @@
 <template>
   <div
-    class="isolate mx-10 max-w-fit-content px-10 flex-col justify-center space-y-12 rounded-3xl bg-black/30 py-12 text-center shadow-lg ring-2 ring-black/10 backdrop-blur-sm"
+    class="isolate mx-10 w-1/3 px-10 flex-col justify-center space-y-12 rounded-2xl bg-black/30 py-12 text-center shadow-lg ring-2 ring-black/10 backdrop-blur-sm"
   >
     <div class="text-center">
-      <div class="text-[42px] font-bold text-white mb-4">
-        Login to your account
+      <div class="text-4xl font-bold text-base-content mb-4">
+        Login to Your Account
       </div>
+      <!-- <p class="text-base-content">Start selling parts today!</p> -->
     </div>
 
     <!-- Input Fields -->
@@ -16,7 +17,7 @@
           v-model="email"
           label="Email"
           placeholder="Type your email"
-          class="input rounded-full input-bordered w-full bg-white text-black"
+          class="input rounded-2xl input-bordered w-full bg-white text-black"
         />
 
         <Input
@@ -24,15 +25,14 @@
           v-model="password"
           label="Password"
           placeholder="Type your password"
-          class="input rounded-full input-bordered w-full bg-white text-black"
+          class="input rounded-2xl input-bordered w-full bg-white text-black"
         />
       </div>
 
       <!-- Buttons -->
       <div class="mt-12 text-center">
         <Button
-          class="btn border-0 w-full rounded-full bg-primary hover:bg-primary-hover text-secondary hover:text-black"
-          type="primary"
+          class="btn border-0 w-full rounded-2xl bg-primary hover:bg-primary-hover text-secondary hover:text-black"
           text="Sign In"
           :on-click="signIn"
         />
@@ -40,11 +40,18 @@
           or
         </div>
         <Button
-          class="btn-default btn rounded-full btn-outline w-full text-white hover:bg-white"
-          type="secondary"
+          class="btn-default btn rounded-2xl btn-outline w-full text-white hover:bg-white"
           text="Sign In with Google"
           icon-name="devicon:google"
         />
+      </div>
+
+      <!-- Bottom message -->
+      <div class="mt-12 text-center">
+        <p class="text-base-content">
+          You don't have an account yet? Create one
+          <a href="/register" class="text-primary">here</a>.
+        </p>
       </div>
     </div>
   </div>

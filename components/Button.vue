@@ -1,7 +1,7 @@
 <template>
   <button @click="onClick" :class="class">
     <Icon v-if="iconName" :name="iconName" />
-    {{ text }}
+    <p class="text-base">{{ text }}</p>
   </button>
 </template>
 
