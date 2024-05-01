@@ -4,6 +4,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         "jdm-background": "url('/public/img/background2.png')",
+        "login-background": "url('/public/img/login_photo.png')",
       },
       colors: {
         primary: "#ffbd00",

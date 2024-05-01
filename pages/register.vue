@@ -1,14 +1,13 @@
 <template>
   <div
-    class="isolate mx-10 w-1/3 px-10 flex-col justify-center space-y-12 rounded-2xl bg-base-content/10 py-12 text-center shadow-lg ring-2 ring-base-content/10 backdrop-blur-sm"
-  >
-    <div class="text-center">
-      <div class="text-4xl font-bold text-base-content mb-4">
+    class="hidden bg-login-background md:block md:w-1/2 rounded-l-2xl bg-cover"
+  ></div>
+  <div class="flex flex-col w-full md:w-1/2 p-4">
+    <div class="flex flex-col flex-1 justify-center px-4">
+      <div class="text-4xl font-bold text-base-content mb-10">
         Create account
       </div>
-    </div>
 
-    <div>
       <!-- Input Fields -->
       <div class="space-y-4">
         <Input
@@ -35,10 +34,10 @@
       </div>
 
       <!-- Buttons -->
-      <div class="mt-12 text-center">
+      <div class="mt-14 text-center">
         <Button
           text="Create Account"
-          class="btn border-0 w-full rounded-2xl bg-primary hover:bg-primary-hover text-secondary hover:text-black"
+          class="btn border-0 w-full rounded-2xl bg-primary hover:bg-primary-hover text-black hover:text-black"
           :on-click="signUp"
         />
         <div
@@ -72,12 +71,16 @@ const email = ref("");
 const password = ref("");
 const client = useSupabaseClient();
 
+definePageMeta({
+  layout: "account",
+});
+
 const signUp = async () => {
   await client.auth.signUp({
     email: email.value,
     password: password.value,
   });
-  navigateTo("/");
+  navigateTo("/login");
 };
 </script>
 
