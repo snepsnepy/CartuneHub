@@ -13,18 +13,26 @@
         <div class="space-y-4">
           <Input
             type="text"
-            v-model:value="email"
             label="Email"
+            v-model:value="loginSchema.email"
             placeholder="Type your email"
-            class="input rounded-2xl input-bordered w-full bg-white text-black"
+            @input="v$.email.$touch"
+            :invalid="v$.email.$error"
+            :error-message="
+              loginSchema.email.length
+                ? v$.email.email.$message
+                : v$.email.required.$message
+            "
           />
 
           <Input
             type="password"
-            v-model:value="password"
             label="Password"
+            v-model:value="loginSchema.password"
             placeholder="Type your password"
-            class="input rounded-2xl input-bordered w-full bg-white text-black"
+            @input="v$.password.$touch"
+            :invalid="v$.password.$error"
+            :error-message="v$.password.required.$message"
           />
         </div>
       </div>
@@ -35,6 +43,7 @@
           class="btn border-0 w-full rounded-2xl bg-primary hover:bg-primary-hover text-black hover:text-black"
           text="Sign In"
           :on-click="signIn"
+          :disabled="v$.email.$error || v$.password.$error"
         />
         <div class="divider flex w-full justify-center text-center text-white">
           or
@@ -58,22 +67,26 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import useVuelidate from "@vuelidate/core";
+import { loginRules, loginSchema } from "~/validations/rules";
 
-const email = ref("snepysneptest@gmail.com");
-const password = ref("mihnea123");
 const client = useSupabaseClient();
+
+const v$ = useVuelidate(loginRules, loginSchema);
 
 definePageMeta({
   layout: "account",
 });
 
 const signIn = async () => {
-  await client.auth.signInWithPassword({
-    email: email.value,
-    password: password.value,
-  });
-  navigateTo("/");
+  v$.value.$validate();
+  if (!v$.value.$error) {
+    await client.auth.signInWithPassword({
+      email: loginSchema.email,
+      password: loginSchema.password,
+    });
+    navigateTo("/");
+  }
 };
 </script>
 

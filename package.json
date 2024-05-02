@@ -20,6 +20,8 @@
     "@nuxtjs/supabase": "^1.2.1",
     "@nuxtjs/tailwindcss": "^6.12.0",
     "@pinia/nuxt": "^0.5.1",
+    "@vuelidate/core": "^2.0.3",
+    "@vuelidate/validators": "^2.0.4",
     "daisyui": "^4.10.2",
     "nuxt-icon": "^0.6.10",
     "supabase": "^1.163.2"
