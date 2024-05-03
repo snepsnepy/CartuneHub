@@ -1,5 +1,3 @@
-// SCHEMA & RULES
-
 import {
   required,
   email,
@@ -8,6 +6,16 @@ import {
   helpers,
 } from "@vuelidate/validators";
 
+// ERROR MESSAGES
+
+const requiredMessage = "This field is required. Please fill it in.";
+const emailMessage = "Please enter a valid email address.";
+const passwordMessage = {
+  minLength: "Password must be at least 6 characters long.",
+  sameAs: "Passwords do not match. Please ensure they are identical.",
+};
+
+// SCHEMA & RULES
 // USER REGISTRATION VALIDATIONS
 export const registrationSchema = reactive({
   email: "",
@@ -18,20 +26,17 @@ export const registrationSchema = reactive({
 export const registrationRules = computed(() => {
   return {
     email: {
-      required: helpers.withMessage("This field is required", required),
-      email: helpers.withMessage("Invalid email format", email),
+      required: helpers.withMessage(requiredMessage, required),
+      email: helpers.withMessage(emailMessage, email),
     },
     password: {
-      required: helpers.withMessage("This field is required", required),
-      minLength: helpers.withMessage(
-        "Password needs to be at least 6 characters long",
-        minLength(6)
-      ),
+      required: helpers.withMessage(requiredMessage, required),
+      minLength: helpers.withMessage(passwordMessage.minLength, minLength(6)),
     },
     confirmPassword: {
-      required: helpers.withMessage("This field is required", required),
+      required: helpers.withMessage(requiredMessage, required),
       sameAs: helpers.withMessage(
-        "Passowrd doesn't match",
+        passwordMessage.sameAs,
         sameAs(registrationSchema.password)
       ),
     },
@@ -47,11 +52,11 @@ export const loginSchema = reactive({
 export const loginRules = computed(() => {
   return {
     email: {
-      required: helpers.withMessage("This field is required", required),
-      email: helpers.withMessage("Invalid email format", email),
+      required: helpers.withMessage(requiredMessage, required),
+      email: helpers.withMessage(emailMessage, email),
     },
     password: {
-      required: helpers.withMessage("This field is required", required),
+      required: helpers.withMessage(requiredMessage, required),
     },
   };
 });

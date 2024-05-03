@@ -3,7 +3,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        "jdm-background": "url('/public/img/background2.png')",
+        "jdm-background": "url('/public/img/background3.png')",
         "login-background": "url('/public/img/login_photo.png')",
       },
       colors: {
@@ -13,6 +13,8 @@ module.exports = {
         secondary: "#390099",
         "secondary-content": "#ff0054",
         "base-content": "#fff",
+        error: "#ff5a5f",
+        success: "#7cb518",
       },
       fontFamily: {
         mukta: ["Mukta", "sans-serif"],

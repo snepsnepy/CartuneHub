@@ -13,3 +13,9 @@ defineProps<{
   onClick?: () => void;
 }>();
 </script>
+
+<style scoped>
+button:disabled {
+  @apply bg-primary opacity-50 text-black/50;
+}
+</style>

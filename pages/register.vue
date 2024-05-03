@@ -4,6 +4,13 @@
   ></div>
   <div class="flex flex-col w-full md:w-1/2 p-4">
     <div class="flex flex-col flex-1 justify-center px-4">
+      <div class="flex justify-center mb-8">
+        <img
+          src="/public/img/logo.png"
+          alt="Logo"
+          class="w-20 h-20 md:hidden"
+        />
+      </div>
       <div class="text-4xl font-bold text-base-content mb-10">
         Create account
       </div>
@@ -11,6 +18,7 @@
       <!-- Input Fields -->
       <div class="space-y-4">
         <Input
+          required
           type="text"
           label="Email"
           placeholder="Type your email"
@@ -25,6 +33,7 @@
         />
 
         <Input
+          required
           type="password"
           label="Password"
           placeholder="Password"
@@ -39,6 +48,7 @@
         />
 
         <Input
+          required
           type="password"
           label="Confirm Password"
           placeholder="Confirm Password"
