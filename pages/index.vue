@@ -1,13 +1,7 @@
 <template>
-  <h1>Main page</h1>
-  <input
-    type="text"
-    placeholder="Type here"
-    v-model="item"
-    class="input input-bordered w-full max-w-xs"
-  />
-  <button class="btn primary" v-if="user" @click="signOut">Logout</button>
-  <button class="btn primary" @click="insertRow">INSERT</button>
+  <div>
+    <h1>Dashboard</h1>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -15,6 +9,7 @@ import { createClient } from "@supabase/supabase-js";
 
 definePageMeta({
   middleware: "auth",
+  layout: "dashboard",
 });
 
 const config = useRuntimeConfig();
@@ -40,4 +35,16 @@ const insertRow = async () => {
 };
 </script>
 
-<style></style>
+<style>
+#__nuxt
+  > div
+  > div.w-full.flex.justify-center.h-full
+  > div
+  > div
+  > div:nth-child(1)
+  > ul
+  > li:nth-child(1)
+  > a {
+  @apply active;
+}
+</style>

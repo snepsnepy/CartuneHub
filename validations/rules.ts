@@ -8,7 +8,7 @@ import {
 
 // ERROR MESSAGES
 
-const requiredMessage = "This field is required. Please fill it in.";
+const requiredMessage = "This field is required.";
 const emailMessage = "Please enter a valid email address.";
 const passwordMessage = {
   minLength: "Password must be at least 6 characters long.",
@@ -45,8 +45,8 @@ export const registrationRules = computed(() => {
 
 // USER LOGIN VALIDATIONS
 export const loginSchema = reactive({
-  email: "",
-  password: "",
+  email: "snepysneptest@gmail.com",
+  password: "mihnea123",
 });
 
 export const loginRules = computed(() => {

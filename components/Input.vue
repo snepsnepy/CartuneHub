@@ -1,13 +1,13 @@
 <template>
   <div>
-    <div v-if="label" class="flex pb-2 text-white text-sm">
+    <div v-if="label" class="flex pb-2 text-base-content text-sm">
       {{ label }}<span v-if="required" class="text-error">&nbsp*</span>
     </div>
     <input
       :type="type"
       v-model="modelValue"
       :placeholder="placeholder"
-      class="input rounded-2xl input-bordered w-full bg-base-content text-black focus:border-primary-hover focus:border-2"
+      class="input rounded-2xl input-bordered w-full bg-base-content ring-1 ring-base-content/30 bg-base-content/5 text-base-content focus:border-primary-hover focus:border-2"
       :class="{
         'border-error border-2 focus:border-error': invalid,
         'border-success border-2': !invalid && modelValue?.length,
@@ -39,6 +39,6 @@ watch(modelValue, () => emit("update:value", modelValue.value));
 
 <style scoped>
 input:focus {
-  @apply outline-none;
+  @apply outline-none bg-black/15 text-base-content;
 }
 </style>
