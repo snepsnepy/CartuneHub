@@ -1,26 +1,30 @@
 import { navigateTo } from 'nuxt/dist/app';
 <template>
-  <div class="flex w-full p-4 justify-start">
-    <img
-      src="@/public/img/logo.png"
-      alt="Logo"
-      width="70"
-      height="70"
-      class="hidden md:flex"
-    />
-  </div>
   <div class="w-full flex justify-center h-full">
     <div
       class="flex w-full flex-col items-center justify-center px-4 sm:px-0 mx-8 my-8"
     >
       <div
-        class="flex rounded-2xl h-full shadow-lg w-full bg-black/15 text-center ring-2 ring-black/10 backdrop-blur-s"
+        class="flex rounded-2xl h-full shadow-lg w-full bg-black/15 ring-2 ring-black/10 backdrop-blur-s"
       >
         <!-- Sidebar -->
         <div>
           <ul
             class="menu bg-base-content/5 w-56 rounded-l-box h-full border-r border-base-content/10"
           >
+            <div
+              class="flex p-2 mb-8 w-full justify-center mx-auto items-center"
+            >
+              <img
+                src="@/public/img/logo.png"
+                alt="Logo"
+                width="40"
+                height="40"
+                class="hidden md:flex"
+              />
+              <h1 class="flex mx-auto text-lg text-base-content">CarTuneHub</h1>
+            </div>
+
             <li>
               <NuxtLink to="/">
                 <svg
@@ -82,7 +86,7 @@ import { navigateTo } from 'nuxt/dist/app';
         </div>
 
         <!-- Content -->
-        <div class="w-full items-center my-auto">
+        <div class="w-full overflow-scroll">
           <slot />
         </div>
       </div>
