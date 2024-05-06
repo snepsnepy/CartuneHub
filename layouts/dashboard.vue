@@ -86,7 +86,7 @@ import { navigateTo } from 'nuxt/dist/app';
         </div>
 
         <!-- Content -->
-        <div class="w-full overflow-scroll">
+        <div class="w-full overflow-scroll [&::-webkit-scrollbar]:hidden">
           <slot />
         </div>
       </div>
