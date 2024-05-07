@@ -152,6 +152,6 @@ const insertRow = async () => {
 
 <style scoped>
 .card {
-  @apply bg-black/15;
+  @apply bg-black/25;
 }
 </style>
