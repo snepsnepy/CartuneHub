@@ -1,9 +1,10 @@
 <template>
   <section class="flex flex-col gap-y-8 py-8 h-full">
     <!-- Search Bar -->
-    <div class="flex w-full justify-center">
-      <label class="input input-bordered flex items-center gap-2 w-1/2">
-        <input type="text" class="grow" placeholder="Search" />
+    <div class="flex w-full justify-center text-base-content">
+      <label
+        class="input flex items-center gap-2 w-1/2 bg-white/10 shadow-xl ring-2 ring-white/20 backdrop-blur-s"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 16 16"
@@ -16,18 +17,51 @@
             clip-rule="evenodd"
           />
         </svg>
+        <input type="text" class="grow" placeholder="Search product by name" />
       </label>
     </div>
 
     <!-- Cards -->
     <div class="flex w-full flex-wrap justify-center">
-      <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
-      >
+      <div class="card w-96 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-8">
         <figure>
           <img src="/img/background.png" alt="Shoes" />
         </figure>
-        <div class="card-body">
+        <div class="card-body bg-white/20 rounded-b-2xl text-white">
+          <h2 class="card-title">
+            Shoes!
+            <div class="badge badge-secondary">NEW</div>
+          </h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <div class="badge badge-outline">Fashion</div>
+            <div class="badge badge-outline">Products</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card w-96 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-8">
+        <figure>
+          <img src="/img/background.png" alt="Shoes" />
+        </figure>
+        <div class="card-body bg-white/20 rounded-b-2xl text-white">
+          <h2 class="card-title">
+            Shoes!
+            <div class="badge badge-secondary">NEW</div>
+          </h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <div class="badge badge-outline">Fashion</div>
+            <div class="badge badge-outline">Products</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card w-96 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-8">
+        <figure>
+          <img src="/img/background.png" alt="Shoes" />
+        </figure>
+        <div class="card-body bg-white/20 rounded-b-2xl text-white">
           <h2 class="card-title">
             Shoes!
             <div class="badge badge-secondary">NEW</div>
@@ -41,12 +75,12 @@
       </div>
 
       <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-8"
       >
         <figure>
           <img src="/img/background.png" alt="Shoes" />
         </figure>
-        <div class="card-body">
+        <div class="card-body bg-white/20 rounded-b-2xl text-white">
           <h2 class="card-title">
             Shoes!
             <div class="badge badge-secondary">NEW</div>
@@ -60,12 +94,12 @@
       </div>
 
       <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-8"
       >
         <figure>
           <img src="/img/background.png" alt="Shoes" />
         </figure>
-        <div class="card-body">
+        <div class="card-body bg-white/20 rounded-b-2xl text-white">
           <h2 class="card-title">
             Shoes!
             <div class="badge badge-secondary">NEW</div>
@@ -79,50 +113,12 @@
       </div>
 
       <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-8"
       >
         <figure>
           <img src="/img/background.png" alt="Shoes" />
         </figure>
-        <div class="card-body">
-          <h2 class="card-title">
-            Shoes!
-            <div class="badge badge-secondary">NEW</div>
-          </h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions justify-end">
-            <div class="badge badge-outline">Fashion</div>
-            <div class="badge badge-outline">Products</div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
-      >
-        <figure>
-          <img src="/img/background.png" alt="Shoes" />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">
-            Shoes!
-            <div class="badge badge-secondary">NEW</div>
-          </h2>
-          <p>If a dog chews shoes whose shoes does he choose?</p>
-          <div class="card-actions justify-end">
-            <div class="badge badge-outline">Fashion</div>
-            <div class="badge badge-outline">Products</div>
-          </div>
-        </div>
-      </div>
-
-      <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
-      >
-        <figure>
-          <img src="/img/background.png" alt="Shoes" />
-        </figure>
-        <div class="card-body">
+        <div class="card-body bg-white/20 rounded-b-2xl text-white">
           <h2 class="card-title">
             Shoes!
             <div class="badge badge-secondary">NEW</div>

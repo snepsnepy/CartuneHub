@@ -2,11 +2,15 @@
   <div class="flex flex-col gap-y-8 py-8 mx-8">
     <!-- NAVBAR -->
     <div
-      class="navbar rounded-2xl h-full shadow-lg w-full bg-white/10 ring-2 ring-black/10 backdrop-blur-s"
+      class="navbar rounded-2xl h-full shadow-lg w-full bg-white/10 ring-2 ring-white/20 backdrop-blur-s"
     >
       <div class="navbar-start">
         <div class="dropdown">
-          <div tabindex="0" role="button" class="btn btn-ghost btn-circle">
+          <div
+            tabindex="0"
+            role="button"
+            class="btn btn-ghost btn-circle text-white"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-5 w-5"
@@ -70,7 +74,7 @@
     <div class="w-full flex justify-center h-screen">
       <div class="flex w-full flex-col items-center justify-center sm:px-0">
         <div
-          class="flex rounded-2xl h-full shadow-lg w-full bg-white/10 ring-2 ring-black/10 backdrop-blur-s"
+          class="flex rounded-2xl h-full shadow-lg w-full bg-white/10 ring-2 ring-white/20 backdrop-blur-s"
         >
           <!-- Content -->
           <div class="w-full overflow-scroll [&::-webkit-scrollbar]:hidden">
@@ -80,7 +84,7 @@
           <!-- Right Sidebar -->
           <div class="flex w-1/4 p-8 pl-8">
             <ul
-              class="menu rounded-2xl h-full shadow-lg w-full bg-white/10 ring-2 ring-black/10 backdrop-blur-s"
+              class="menu rounded-2xl h-full shadow-lg w-full bg-white/10 ring-2 ring-white/20 backdrop-blur-s"
             >
               <h1 class="flex text-lg font-bold text-base-content py-2 px-2">
                 Quick actions
