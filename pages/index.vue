@@ -1,8 +1,8 @@
 <template>
-  <section class="">
+  <section class="flex flex-col gap-y-8 py-8 h-full">
     <!-- Search Bar -->
-    <div class="flex w-full justify-center py-4">
-      <label class="input input-bordered flex items-center gap-2 w-1/4">
+    <div class="flex w-full justify-center">
+      <label class="input input-bordered flex items-center gap-2 w-1/2">
         <input type="text" class="grow" placeholder="Search" />
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -22,7 +22,7 @@
     <!-- Cards -->
     <div class="flex w-full flex-wrap justify-center">
       <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-4"
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
       >
         <figure>
           <img src="/img/background.png" alt="Shoes" />
@@ -41,7 +41,7 @@
       </div>
 
       <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-4"
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
       >
         <figure>
           <img src="/img/background.png" alt="Shoes" />
@@ -60,7 +60,7 @@
       </div>
 
       <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-4"
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
       >
         <figure>
           <img src="/img/background.png" alt="Shoes" />
@@ -79,7 +79,7 @@
       </div>
 
       <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-4"
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
       >
         <figure>
           <img src="/img/background.png" alt="Shoes" />
@@ -98,7 +98,7 @@
       </div>
 
       <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-4"
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
       >
         <figure>
           <img src="/img/background.png" alt="Shoes" />
@@ -117,7 +117,7 @@
       </div>
 
       <div
-        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-4"
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-8"
       >
         <figure>
           <img src="/img/background.png" alt="Shoes" />
