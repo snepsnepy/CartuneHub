@@ -1,6 +1,5 @@
-import { navigateTo } from 'nuxt/dist/app';
 <template>
-  <div class="w-full flex justify-center h-full">
+  <div class="w-full flex justify-center h-screen">
     <div
       class="flex w-full flex-col items-center justify-center px-4 sm:px-0 mx-8 my-8"
     >
