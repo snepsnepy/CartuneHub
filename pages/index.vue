@@ -77,6 +77,63 @@
           </div>
         </div>
       </div>
+
+      <div
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-4"
+      >
+        <figure>
+          <img src="/img/background.png" alt="Shoes" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">
+            Shoes!
+            <div class="badge badge-secondary">NEW</div>
+          </h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <div class="badge badge-outline">Fashion</div>
+            <div class="badge badge-outline">Products</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-4"
+      >
+        <figure>
+          <img src="/img/background.png" alt="Shoes" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">
+            Shoes!
+            <div class="badge badge-secondary">NEW</div>
+          </h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <div class="badge badge-outline">Fashion</div>
+            <div class="badge badge-outline">Products</div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="card w-96 bg-base-100 shadow-xl ring-2 ring-black/15 backdrop-blur-s m-4"
+      >
+        <figure>
+          <img src="/img/background.png" alt="Shoes" />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">
+            Shoes!
+            <div class="badge badge-secondary">NEW</div>
+          </h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions justify-end">
+            <div class="badge badge-outline">Fashion</div>
+            <div class="badge badge-outline">Products</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 </template>
