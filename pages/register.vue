@@ -2,7 +2,7 @@
   <div
     class="hidden bg-login-background md:block md:w-1/2 rounded-l-2xl bg-cover"
   ></div>
-  <div class="flex flex-col w-full md:w-1/2 p-6 py-40">
+  <div class="flex flex-col w-full md:w-1/2 p-6 py-20">
     <div class="flex flex-col flex-1 justify-center px-4">
       <div class="flex justify-center mb-8">
         <img
@@ -16,51 +16,53 @@
       </div>
 
       <!-- Input Fields -->
-      <div class="space-y-4">
-        <Input
-          required
-          type="text"
-          label="Email"
-          placeholder="Type your email"
-          v-model:value="registrationSchema.email"
-          @input="v$.email.$touch"
-          :invalid="v$.email.$error"
-          :error-message="
-            registrationSchema.email.length
-              ? v$.email.email.$message
-              : v$.email.required.$message
-          "
-        />
+      <div class="w-full mt-4">
+        <div class="space-y-4">
+          <Input
+            required
+            type="text"
+            label="Email"
+            placeholder="Type your email"
+            v-model:value="registrationSchema.email"
+            @input="v$.email.$touch"
+            :invalid="v$.email.$error"
+            :error-message="
+              registrationSchema.email.length
+                ? v$.email.email.$message
+                : v$.email.required.$message
+            "
+          />
 
-        <Input
-          required
-          type="password"
-          label="Password"
-          placeholder="Password"
-          v-model:value="registrationSchema.password"
-          @input="v$.password.$touch"
-          :invalid="v$.password.$error"
-          :error-message="
-            registrationSchema.password.length
-              ? v$.password.minLength.$message
-              : v$.password.required.$message
-          "
-        />
+          <Input
+            required
+            type="password"
+            label="Password"
+            placeholder="Password"
+            v-model:value="registrationSchema.password"
+            @input="v$.password.$touch"
+            :invalid="v$.password.$error"
+            :error-message="
+              registrationSchema.password.length
+                ? v$.password.minLength.$message
+                : v$.password.required.$message
+            "
+          />
 
-        <Input
-          required
-          type="password"
-          label="Confirm Password"
-          placeholder="Confirm Password"
-          v-model:value="registrationSchema.confirmPassword"
-          @input="v$.confirmPassword.$touch"
-          :invalid="v$.confirmPassword.$error"
-          :error-message="
-            registrationSchema.confirmPassword.length
-              ? v$.confirmPassword.sameAs.$message
-              : v$.confirmPassword.required.$message
-          "
-        />
+          <Input
+            required
+            type="password"
+            label="Confirm Password"
+            placeholder="Confirm Password"
+            v-model:value="registrationSchema.confirmPassword"
+            @input="v$.confirmPassword.$touch"
+            :invalid="v$.confirmPassword.$error"
+            :error-message="
+              registrationSchema.confirmPassword.length
+                ? v$.confirmPassword.sameAs.$message
+                : v$.confirmPassword.required.$message
+            "
+          />
+        </div>
       </div>
 
       <!-- Buttons -->
