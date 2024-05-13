@@ -6,6 +6,7 @@
   font-display: swap;
 }
 
+html,
 body {
-  @apply font-mukta bg-jdm-background items-center bg-cover bg-fixed bg-center bg-no-repeat h-full min-h-[100vh];
+  @apply font-mukta bg-cover bg-fixed bg-center bg-no-repeat bg-jdm-background h-full;
 }
