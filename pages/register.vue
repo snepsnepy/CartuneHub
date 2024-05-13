@@ -2,7 +2,7 @@
   <div
     class="hidden bg-login-background md:block md:w-1/2 rounded-l-2xl bg-cover"
   ></div>
-  <div class="flex flex-col w-full md:w-1/2 p-6 py-20">
+  <div class="flex flex-col w-full md:w-1/2 p-6 py-40">
     <div class="flex flex-col flex-1 justify-center px-4">
       <div class="flex justify-center mb-8">
         <img
