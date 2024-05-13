@@ -1,8 +1,8 @@
 <template>
-  <div class="flex flex-col gap-y-4 py-4 mx-8">
+  <div class="flex flex-col gap-y-4 py-4 mx-4 h-screen">
     <!-- NAVBAR -->
     <div
-      class="navbar rounded-2xl h-full shadow-lg w-full bg-white/10 ring-2 ring-white/20 backdrop-blur-s"
+      class="navbar rounded-2xl h-fit shadow-lg w-full bg-white/10 ring-2 ring-white/20 backdrop-blur-s"
     >
       <div class="navbar-start">
         <div class="dropdown">
@@ -71,13 +71,15 @@
     </div>
 
     <!-- MAIN VIEW -->
-    <div class="w-full flex justify-center h-screen">
+    <div class="w-full flex justify-center h-full">
       <div class="flex w-full flex-col items-center justify-center sm:px-0">
         <div
           class="flex rounded-2xl h-full shadow-lg w-full bg-white/10 ring-2 ring-white/20 backdrop-blur-s"
         >
           <!-- Content -->
-          <div class="w-full overflow-scroll [&::-webkit-scrollbar]:hidden">
+          <div
+            class="w-full h-full overflow-scroll [&::-webkit-scrollbar]:hidden"
+          >
             <slot />
           </div>
 
