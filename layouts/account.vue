@@ -8,7 +8,7 @@
       class="hidden md:flex"
     />
   </div>
-  <div class="w-full flex justify-center items-center my-auto h-full">
+  <div class="w-full flex justify-center items-center py-32">
     <div class="w-full">
       <div class="flex flex-col items-center justify-center px-4 sm:px-0">
         <div
