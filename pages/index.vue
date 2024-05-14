@@ -1,7 +1,7 @@
 <template>
   <ClientOnly>
     <div
-      class="w-full mx-auto py-24 px-4 max-h-full h-full overflow-scroll [&::-webkit-scrollbar]:hidden"
+      class="w-full max-w-7xl mx-auto py-24 px-4 max-h-full h-full overflow-scroll [&::-webkit-scrollbar]:hidden"
     >
       <!-- Title -->
       <div class="text-center">
@@ -14,18 +14,13 @@
       </div>
 
       <!-- Search -->
-      <div class="relative w-full mx-auto flex mt-10 mb-20">
-        <input
-          v-model="filter"
+      <div class="relative flex w-full mt-10 mb-20">
+        <Input
           type="text"
-          class="peer w-full h-12 inline-flex items-center pl-12 pr-4 rounded-xl border border-slate-300 text-slate-700 placeholder:text-slate-300 font-sans leading-snug outline-none focus-visible:outline-dashed focus-visible:outline-offset-4 focus-visible:outline-slate-300"
-          placeholder="Filter items..."
+          placeholder="Search items.."
+          v-model:value="filter"
+          class="w-full h-12 inline-flex items-center rounded-xl"
         />
-        <div
-          class="absolute top-0 left-0 h-12 w-12 flex items-center justify-center text-slate-400 peer-focus:text-violet-500 transition-colors duration-300"
-        >
-          <Icon name="lucide:search" class="w-5 h-5" />
-        </div>
       </div>
 
       <!-- List wrapper -->
@@ -57,8 +52,17 @@
             <div
               v-for="item in sortedItems"
               :key="item.title"
-              class="font-sans border border-slate-200 p-6 rounded-xl bg-white hover:shadow-xl hover:shadow-slate-300/20 transition-all duration-300"
+              class="font-sans rounded-xl hover:shadow-xl hover:shadow-slate-300/20 transition-all duration-300 shadow-lg w-full bg-white/5 ring-2 ring-white/20 backdrop-blur-s"
             >
+              <!-- Image -->
+              <figure>
+                <img
+                  src="/public/img/background.png"
+                  alt="Shoes"
+                  class="rounded-t-xl"
+                />
+              </figure>
+
               <!-- Title -->
               <div class="flex justify-center text-black">
                 {{ item.category }}
