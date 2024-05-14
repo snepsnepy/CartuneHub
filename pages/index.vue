@@ -1,337 +1,89 @@
 <template>
-  <section class="flex w-full h-full">
-    <!-- Right Sidebar -->
-    <div class="hidden xl:w-1/4 py-4 pl-4 lg:flex">
-      <ul
-        class="menu rounded-2xl h-full shadow-lg w-full bg-white/10 ring-2 ring-white/20 backdrop-blur-s"
-      >
-        <h1 class="flex text-lg font-bold text-base-content py-2 px-2">
-          Filters
+  <ClientOnly>
+    <div
+      class="w-full mx-auto py-24 px-4 max-h-full h-full overflow-scroll [&::-webkit-scrollbar]:hidden"
+    >
+      <!-- Title -->
+      <div class="text-center">
+        <h1 class="mb-2 font-sans text-4xl font-bold text-slate-800">
+          Listed Items
         </h1>
+        <p class="font-sans text-lg text-slate-500">
+          A filterable list of products for testing puropses
+        </p>
+      </div>
 
-        <li class="text-base-content">
-          <NuxtLink to="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
-              />
-            </svg>
-            Market
-          </NuxtLink>
-        </li>
-        <li class="text-base-content">
-          <NuxtLink to="/Products">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            Brands
-          </NuxtLink>
-        </li>
-        <li class="text-base-content">
-          <NuxtLink to="/">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-5 w-5"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
-              />
-            </svg>
-            Photography
-          </NuxtLink>
-        </li>
-      </ul>
-    </div>
-
-    <div class="flex flex-col w-full">
-      <!-- Search Bar -->
-      <div class="flex justify-center text-base-content h-fit w-full">
-        <label
-          class="input flex rounded-full items-center gap-2 w-1/2 bg-white/10 shadow-xl ring-2 ring-white/20 backdrop-blur-s"
+      <!-- Search -->
+      <div class="relative w-full mx-auto flex mt-10 mb-20">
+        <input
+          v-model="filter"
+          type="text"
+          class="peer w-full h-12 inline-flex items-center pl-12 pr-4 rounded-xl border border-slate-300 text-slate-700 placeholder:text-slate-300 font-sans leading-snug outline-none focus-visible:outline-dashed focus-visible:outline-offset-4 focus-visible:outline-slate-300"
+          placeholder="Filter items..."
+        />
+        <div
+          class="absolute top-0 left-0 h-12 w-12 flex items-center justify-center text-slate-400 peer-focus:text-violet-500 transition-colors duration-300"
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="w-4 h-4 opacity-70"
+          <Icon name="lucide:search" class="w-5 h-5" />
+        </div>
+      </div>
+
+      <!-- List wrapper -->
+      <div class="relative">
+        <!-- Placeholder -->
+        <div v-if="sortedItems?.length === 0">
+          <div
+            class="text-center max-w-sm mx-auto flex items-center justify-center py-24"
           >
-            <path
-              fill-rule="evenodd"
-              d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-              clip-rule="evenodd"
-            />
-          </svg>
-          <input
-            type="text"
-            class="grow"
-            placeholder="Search product by name"
-          />
-        </label>
-      </div>
-
-      <!-- CARDS -->
-      <div
-        class="flex w-full flex-wrap justify-center overflow-scroll [&::-webkit-scrollbar]:hidden"
-      >
-        <div
-          class="card w-72 h-fit shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
+            <div>
+              <Icon name="et:layers" class="w-12 h-12 mb-4 text-slate-400" />
+              <h3 class="font-sans text-lg text-slate-700">No items found</h3>
+              <p class="text-sm text-slate-400">
+                We couldn't find any items matching your search criteria. Please
+                try another search.
+              </p>
             </div>
           </div>
         </div>
+        <div v-else class="relative grid sm:grid-cols-3 gap-6">
+          <TransitionGroup
+            enter-active-class="transform-gpu"
+            enter-from-class="opacity-0 -translate-x-full"
+            enter-to-class="opacity-100 translate-x-0"
+            leave-active-class="absolute transform-gpu"
+            leave-from-class="opacity-100 translate-x-0"
+            leave-to-class="opacity-0 -translate-x-full"
+          >
+            <div
+              v-for="item in sortedItems"
+              :key="item.title"
+              class="font-sans border border-slate-200 p-6 rounded-xl bg-white hover:shadow-xl hover:shadow-slate-300/20 transition-all duration-300"
+            >
+              <!-- Title -->
+              <div class="flex justify-center text-black">
+                {{ item.category }}
+              </div>
 
-        <div
-          class="card w-72 h-fit shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
+              <!-- Details -->
+              <div class="text-center mt-4">
+                <h4 class="text-lg font-medium text-slate-700">
+                  {{ item.title }}
+                </h4>
+                <p class="text-sm text-slate-400">{{ item.phoneNo }}</p>
+                <a
+                  :href="`mailto:${item.email}`"
+                  class="flex items-center justify-center gap-2 py-4 text-sm underline-offset-4 text-slate-500 hover:text-violet-500 hover:underline transition-colors duration-300"
+                >
+                  <Icon name="lucide:mail" class="w-4 h-4" />
+                  <span>{{ item.email }}</span>
+                </a>
+              </div>
             </div>
-          </div>
-        </div>
-
-        <div
-          class="card w-72 h-fit shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="card w-72 h-fit bg-base-100 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="card w-72 h-fit bg-base-100 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="card w-72 h-fit bg-base-100 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
+          </TransitionGroup>
         </div>
       </div>
     </div>
-
-    <!-- Cards -->
-    <!-- <div class="flex w-full flex-wrap justify-center">
-        <div
-          class="card w-96 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="card w-96 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="card w-96 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="card w-96 bg-base-100 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="card w-96 bg-base-100 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
-        </div>
-
-        <div
-          class="card w-96 bg-base-100 shadow-xl ring-2 ring-white/10 backdrop-blur-s m-2"
-        >
-          <figure>
-            <img src="/img/background.png" alt="Shoes" />
-          </figure>
-          <div class="card-body bg-white/20 rounded-b-2xl text-white">
-            <h2 class="card-title">
-              Shoes!
-              <div class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline">Fashion</div>
-              <div class="badge badge-outline">Products</div>
-            </div>
-          </div>
-        </div>
-      </div> -->
-  </section>
+  </ClientOnly>
 </template>
 
 <script lang="ts" setup>
@@ -348,21 +100,28 @@ const supabase = createClient(
   config.public.SUPABASE_KEY
 );
 
-const client = useSupabaseClient();
-const user = useSupabaseUser();
+const tableData = ref<any[] | null>();
+const filter = ref("");
 
-const item = ref("");
-
-const signOut = async () => {
-  await client.auth.signOut();
-  navigateTo("/login");
-};
-
-const insertRow = async () => {
-  if (item.value) {
+const filteredItems = computed(() => {
+  if (!filter.value) {
+    return tableData.value;
   }
-  await supabase.from("posts").insert({ title: item.value }).select();
-};
+
+  const filterRe = new RegExp(filter.value, "i");
+  return tableData.value?.filter((item) => {
+    return [item.title].some((item) => item.match(filterRe));
+  });
+});
+
+const sortedItems = computed(() => {
+  return filteredItems.value?.sort((a, b) => {
+    return a.title.localeCompare(b.title);
+  });
+});
+
+const { data } = await supabase.from("items").select();
+tableData.value = data;
 </script>
 
 <style scoped>
