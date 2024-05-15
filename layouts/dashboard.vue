@@ -1,14 +1,6 @@
 <template>
   <div>
-    <Sidebar
-      :isUsedVueRouter="true"
-      :menuOpenedPaddingLeftBody="'250px'"
-      :menuClosedPaddingLeftBody="'78px'"
-      :isPaddingLeft="true"
-      :isSearch="false"
-      menuTitle="CARTUNEHUB"
-      menuLogo="/img/logo.png"
-    />
+    <Sidebar />
     <slot />
   </div>
 </template>

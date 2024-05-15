@@ -69,7 +69,7 @@
       <div class="mt-14 text-center">
         <Button
           text="Create Account"
-          class="btn border-0 w-full rounded-2xl bg-primary hover:bg-primary-hover text-black hover:text-black"
+          class="btn border-0 w-full rounded-3xl bg-primary hover:bg-primary-hover text-black hover:text-black"
           :on-click="signUp"
           :disabled="
             v$.email.$error || v$.password.$error || v$.confirmPassword.$error
@@ -82,7 +82,7 @@
         </div>
 
         <Button
-          class="btn-default btn rounded-2xl btn-outline w-full text-base-content hover:bg-base-content"
+          class="btn-default btn rounded-3xl btn-outline w-full text-base-content hover:bg-base-content"
           text="Sign Up with Google"
           icon-name="devicon:google"
         />

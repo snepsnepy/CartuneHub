@@ -1,7 +1,7 @@
 <template>
   <ClientOnly>
     <div
-      class="w-full max-w-7xl mx-auto py-24 px-4 max-h-full h-full overflow-scroll [&::-webkit-scrollbar]:hidden"
+      class="w-full mx-auto py-24 px-16 max-h-full h-full overflow-scroll [&::-webkit-scrollbar]:hidden"
     >
       <!-- Title -->
       <div class="text-center">
@@ -52,7 +52,7 @@
             <div
               v-for="item in sortedItems"
               :key="item.title"
-              class="font-sans rounded-xl hover:shadow-xl hover:shadow-slate-300/20 transition-all duration-300 shadow-lg w-full bg-white/5 ring-2 ring-white/20 backdrop-blur-s"
+              class="font-sans rounded-xl hover:shadow-lg hover:shadow-slate-300/20 transition-all duration-300 shadow-lg w-full bg-white/5 ring-2 ring-white/20 backdrop-blur-sm"
             >
               <!-- Image -->
               <figure>
@@ -94,8 +94,8 @@
 import { createClient } from "@supabase/supabase-js";
 
 definePageMeta({
-  layout: "dashboard",
   middleware: "auth",
+  layout: "dashboard",
 });
 
 const config = useRuntimeConfig();

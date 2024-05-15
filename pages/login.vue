@@ -49,7 +49,7 @@
       <!-- Buttons -->
       <div class="mt-14 text-center">
         <Button
-          class="btn border-0 w-full rounded-2xl bg-primary hover:bg-primary-hover text-black hover:text-black"
+          class="btn border-0 w-full rounded-3xl bg-primary hover:bg-primary-hover text-black hover:text-black"
           text="Sign In"
           :on-click="signIn"
           :disabled="v$.email.$error || v$.password.$error"
@@ -58,7 +58,7 @@
           or
         </div>
         <Button
-          class="btn-default btn rounded-2xl btn-outline w-full text-white hover:bg-white"
+          class="btn-default btn rounded-3xl btn-outline w-full text-white hover:bg-white"
           text="Sign In with Google"
           icon-name="devicon:google"
         />

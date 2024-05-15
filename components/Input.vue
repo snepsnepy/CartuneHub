@@ -7,7 +7,7 @@
       :type="type"
       v-model="modelValue"
       :placeholder="placeholder"
-      class="input rounded-2xl input-bordered w-full bg-base-content ring-1 ring-base-content/30 bg-base-content/5 text-base-content focus:border-primary-hover focus:border-2"
+      class="input rounded-3xl input-bordered w-full bg-base-content ring-1 ring-base-content/30 bg-base-content/5 text-base-content focus:border-primary-hover focus:border-2"
       :class="{
         'border-error border-2 focus:border-error': invalid,
         'border-success border-2': !invalid && modelValue?.length,
