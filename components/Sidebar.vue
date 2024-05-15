@@ -200,7 +200,6 @@ onMounted(() => {
 
 // Props
 const props = defineProps<{
-  isMenuOpen?: boolean;
   isUsedVueRouter?: boolean;
   menuTitle?: string;
   menuLogo?: string;
@@ -230,12 +229,10 @@ const props = defineProps<{
 
 // Props destructuring
 const {
-  isMenuOpen,
   isUsedVueRouter,
   menuTitle,
   menuLogo,
   menuIcon,
-
   isSearch,
   searchPlaceholder,
   searchTooltip,
@@ -249,6 +246,7 @@ const {
 
 <!-- Add scoped styles or use CSS modules -->
 <style scoped>
+@import url("https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css");
 /* Add scoped styles or use CSS modules */
 .sidebar {
   position: relative;

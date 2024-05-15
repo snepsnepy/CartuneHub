@@ -5,6 +5,9 @@
       :menuOpenedPaddingLeftBody="'250px'"
       :menuClosedPaddingLeftBody="'78px'"
       :isPaddingLeft="true"
+      :isSearch="false"
+      menuTitle="CARTUNEHUB"
+      menuLogo="/img/logo.png"
     />
     <slot />
   </div>
@@ -12,9 +15,6 @@
 import
 
 <script setup lang="ts">
-// @ts-ignore
-import VueSidebarMenuAkahon from "vue-sidebar-menu-akahon";
-
 enum Routes {
   HOME = "/",
   PRODUCTS = "/Products",
