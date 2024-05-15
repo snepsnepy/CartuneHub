@@ -94,8 +94,8 @@
 import { createClient } from "@supabase/supabase-js";
 
 definePageMeta({
-  middleware: "auth",
   layout: "dashboard",
+  middleware: "auth",
 });
 
 const config = useRuntimeConfig();
