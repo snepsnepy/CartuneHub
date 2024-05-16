@@ -23,10 +23,19 @@
     >
       <div id="my-scroll" class="px-4">
         <ul class="nav-list" style="overflow: visible">
-          <li v-for="(menuItem, index) in menuItems" :key="index">
+          <li
+            v-for="(menuItem, index) in menuItems"
+            :key="index"
+            :id="'links_' + index"
+          >
             <router-link :to="menuItem.link!">
               <i class="bx" :class="menuItem.icon"></i>
               <span class="links_name">{{ menuItem.name }}</span>
+              <span
+                :data-target="'links_' + index"
+                class="tooltip bg-red-300"
+                >{{ menuItem.tooltip || menuItem.name }}</span
+              >
             </router-link>
           </li>
         </ul>
@@ -100,6 +109,33 @@ const menuItems: Array<{
   },
 ];
 
+const tooltipAttached = () => {
+  const tooltips = document.querySelectorAll(".tooltip");
+  tooltips.forEach((tooltip) => {
+    document.body.appendChild(tooltip);
+  });
+
+  document.querySelectorAll(".tooltip").forEach((tooltip) => {
+    if (tooltip instanceof HTMLElement) {
+      const targetID = tooltip.dataset.target;
+      const target = document.querySelector(`#${targetID}`);
+      if (!target) return;
+      target.addEventListener("mouseenter", () => {
+        const targetPosition = target.getBoundingClientRect();
+        if (isOpened.value) return;
+        tooltip.style.top = `${targetPosition.top + window.scrollY}px`;
+        tooltip.style.left = `${
+          targetPosition.left + targetPosition.width + 20
+        }px`;
+        tooltip.classList.add("active");
+      });
+      target.addEventListener("mouseleave", () => {
+        tooltip.classList.remove("active");
+      });
+    }
+  });
+};
+
 const isOpened = ref(false);
 const menuClosedPaddingLeftBody = "78px";
 
@@ -134,6 +170,7 @@ const cssVars = computed(() => ({
 
 onMounted(() => {
   document.body.style.paddingLeft = menuClosedPaddingLeftBody;
+  tooltipAttached();
 });
 
 // Props
@@ -148,6 +185,36 @@ defineProps<{
 
 <style scoped>
 @import url("https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css");
+
+.tooltip {
+  position: absolute;
+  /* top: -20px; */
+  /* left: calc(100% + 15px); */
+  z-index: 3;
+  background: transparent;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 15px;
+  font-weight: 400;
+  opacity: 0;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: 0s;
+  @apply text-primary;
+}
+
+.tooltip.active {
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.4s ease;
+  /* top: 50%; */
+  transform: translateY(25%);
+}
+
+.sidebar.open li .tooltip {
+  display: none;
+}
 
 .sidebar {
   @apply flex flex-col fixed left-8 top-1/4 min-h-min w-20 rounded-3xl bg-primary  z-[99] transition-all ease-linear duration-300;
