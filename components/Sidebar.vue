@@ -1,27 +1,30 @@
 <template>
-  <div :class="{ sidebar: true, open: isOpened }" :style="cssVars">
-    <div class="logo-details pl-4 mt-4">
-      <img src="/img/logo.png" alt="menu-logo" class="menu-logo icon" />
+  <div :class="{ sidebar: true, open: isOpened }" class="py-4">
+    <div class="logo-details pl-4">
+      <img
+        v-if="isOpened"
+        src="/img/logo.png"
+        alt="menu-logo"
+        class="menu-logo"
+      />
 
       <div class="logo_name">CARTUNEHUB</div>
-      <i
-        class="bx"
-        :class="isOpened ? 'bx-menu-alt-right pr-2' : 'bx-menu mx-4'"
+      <Icon
+        :name="isOpened ? 'heroicons-solid:menu-alt-3' : 'heroicons-solid:menu'"
+        :class="{
+          'mr-2 text-black': isOpened,
+          'mx-4 md:mx-7 text-black': !isOpened,
+        }"
         id="btn"
         @click="toggleSidebar"
       />
     </div>
 
     <div
-      style="
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        flex-grow: 1;
-        max-height: calc(100% - 60px);
-      "
+      class="flex flex-col justify-between flex-grow"
+      style="max-height: calc(100% - 60px)"
     >
-      <div id="my-scroll" class="px-4">
+      <div id="my-scroll" class="px-1 md:px-4">
         <ul class="nav-list" style="overflow: visible">
           <li
             v-for="(menuItem, index) in menuItems"
@@ -29,13 +32,11 @@
             :id="'links_' + index"
           >
             <router-link :to="menuItem.link!">
-              <i class="bx" :class="menuItem.icon"></i>
+              <Icon class="bx iconify" :name="menuItem.icon!" />
               <span class="links_name">{{ menuItem.name }}</span>
-              <span
-                :data-target="'links_' + index"
-                class="tooltip bg-red-300"
-                >{{ menuItem.tooltip || menuItem.name }}</span
-              >
+              <span :data-target="'links_' + index" class="tooltip">{{
+                menuItem.tooltip || menuItem.name
+              }}</span>
             </router-link>
           </li>
         </ul>
@@ -45,14 +46,23 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import { ref, onMounted } from "vue";
 
-const emit = defineEmits([
-  "search-input-emit",
-  "button-exit-clicked",
-  "menuItemClicked",
-]);
+defineProps<{
+  profileImg?: string;
+  profileName?: string;
+  profileRole?: string;
+  isExitButton?: boolean;
+  isLoggedIn?: boolean;
+}>();
 
+onMounted(() => {
+  document.body.style.paddingLeft = menuClosedPaddingLeftBody;
+  tooltipAttached();
+});
+
+const isOpened = ref(false);
+const menuClosedPaddingLeftBody = "78px";
 const menuItems: Array<{
   link: string;
   name: string;
@@ -63,51 +73,31 @@ const menuItems: Array<{
     link: "/",
     name: "Dashboard",
     tooltip: "Dashboard",
-    icon: "bx-grid-alt",
+    icon: "akar-icons:dashboard",
   },
   {
     link: "/products",
-    name: "Products",
-    tooltip: "User",
-    icon: "bx-user",
+    name: "Market",
+    tooltip: "Market",
+    icon: "mdi:cart-outline",
   },
   {
     link: "#",
-    name: "Messages",
-    tooltip: "Messages",
-    icon: "bx-chat",
-  },
-  {
-    link: "#",
-    name: "Analytics",
-    tooltip: "Analytics",
-    icon: "bx-pie-chart-alt-2",
-  },
-  {
-    link: "#",
-    name: "File Manager",
-    tooltip: "Files",
-    icon: "bx-folder",
-  },
-  {
-    link: "#",
-    name: "Order",
-    tooltip: "Order",
-    icon: "bx-cart-alt",
+    name: "Stores",
+    tooltip: "Stores",
+    icon: "streamline:shopping-store-2-store-shop-shops-stores",
   },
   {
     link: "#",
     name: "Saved",
     tooltip: "Saved",
-    icon: "bx-heart",
-  },
-  {
-    link: "#",
-    name: "Setting",
-    tooltip: "Setting",
-    icon: "bx-cog",
+    icon: "akar-icons:dashboard",
   },
 ];
+
+const toggleSidebar = () => {
+  isOpened.value = !isOpened.value;
+};
 
 const tooltipAttached = () => {
   const tooltips = document.querySelectorAll(".tooltip");
@@ -135,89 +125,11 @@ const tooltipAttached = () => {
     }
   });
 };
-
-const isOpened = ref(false);
-const menuClosedPaddingLeftBody = "78px";
-
-const toggleSidebar = () => {
-  isOpened.value = !isOpened.value;
-};
-
-// CSS Variables
-const bgColor = "#11101d";
-const secondaryColor = "#1d1b31";
-const homeSectionColor = "#e4e9f7";
-const logoTitleColor = "#fff";
-const iconsColor = "#fff";
-const itemsTooltipColor = "#e4e9f7";
-const searchInputTextColor = "#fff";
-const menuItemsHoverColor = "#fff";
-const menuItemsTextColor = "#fff";
-const menuFooterTextColor = "#fff";
-
-const cssVars = computed(() => ({
-  "--bg-color": bgColor,
-  "--secondary-color": secondaryColor,
-  "--home-section-color": homeSectionColor,
-  "--logo-title-color": logoTitleColor,
-  "--icons-color": iconsColor,
-  "--items-tooltip-color": itemsTooltipColor,
-  "--search-input-text-color": searchInputTextColor,
-  "--menu-items-hover-color": menuItemsHoverColor,
-  "--menu-items-text-color": menuItemsTextColor,
-  "--menu-footer-text-color": menuFooterTextColor,
-}));
-
-onMounted(() => {
-  document.body.style.paddingLeft = menuClosedPaddingLeftBody;
-  tooltipAttached();
-});
-
-// Props
-defineProps<{
-  profileImg?: string;
-  profileName?: string;
-  profileRole?: string;
-  isExitButton?: boolean;
-  isLoggedIn?: boolean;
-}>();
 </script>
 
 <style scoped>
-@import url("https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css");
-
-.tooltip {
-  position: absolute;
-  /* top: -20px; */
-  /* left: calc(100% + 15px); */
-  z-index: 3;
-  background: transparent;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
-  padding: 6px 12px;
-  border-radius: 4px;
-  font-size: 15px;
-  font-weight: 400;
-  opacity: 0;
-  white-space: nowrap;
-  pointer-events: none;
-  transition: 0s;
-  @apply text-primary;
-}
-
-.tooltip.active {
-  opacity: 1;
-  pointer-events: auto;
-  transition: all 0.4s ease;
-  /* top: 50%; */
-  transform: translateY(25%);
-}
-
-.sidebar.open li .tooltip {
-  display: none;
-}
-
 .sidebar {
-  @apply flex flex-col fixed left-8 top-1/4 min-h-min w-20 rounded-3xl bg-primary  z-[99] transition-all ease-linear duration-300;
+  @apply flex flex-col fixed w-14 h-full left-0 top-0 md:left-8 md:top-1/4 md:min-h-min md:h-fit md:w-20 md:rounded-3xl bg-primary  z-[99] transition-all ease-linear duration-300;
 }
 
 .sidebar.open {
@@ -228,29 +140,35 @@ defineProps<{
   @apply flex items-center relative h-16;
 }
 
-.sidebar .logo-details .icon {
+.sidebar .logo-details .iconify {
   @apply opacity-0 transition-all ease-linear duration-300;
 }
 
 .sidebar .logo-details .logo_name {
-  @apply text-black text-base font-semibold opacity-0 transition-all ease-linear duration-300;
+  @apply text-black text-base font-bold opacity-0 transition-all ease-linear duration-300;
 }
 
-.sidebar.open .logo-details .icon,
+.sidebar.open .logo-details .iconify,
 .sidebar.open .logo-details .logo_name {
   @apply opacity-100;
 }
 
 .sidebar .logo-details #btn {
-  @apply absolute top-1/2 right-0 -translate-y-1/3 text-2xl text-center cursor-pointer transition-all ease-linear duration-300;
+  @apply absolute top-1/3 right-0  text-2xl text-center cursor-pointer transition-all ease-linear duration-300;
 }
 
 .sidebar.open .logo-details #btn {
   @apply text-right;
 }
 
+.sidebar .iconify,
 .sidebar i {
-  @apply text-black bg-transparent h-12 min-w-12 text-2xl text-center;
+  @apply text-black bg-transparent min-w-6 ml-3 text-center;
+}
+
+.sidebar li .iconify,
+.sidebar li i {
+  @apply h-12 leading-[50px] rounded-3xl;
 }
 
 .sidebar .nav-list {
@@ -262,102 +180,61 @@ defineProps<{
 }
 
 .sidebar li a {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  border-radius: 12px;
-  align-items: center;
-  text-decoration: none;
-  transition: all 0.4s ease;
-  background: transparent;
+  @apply flex bg-transparent  h-full w-full items-center no-underline transition-all ease-linear duration-300 rounded-3xl sm:w-full;
 }
 
 .sidebar li a:hover {
-  background: var(--menu-items-hover-color);
+  @apply bg-base-content;
 }
 
 .sidebar li a .links_name {
-  color: black;
-  font-size: 15px;
-  font-weight: 400;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.4s;
+  @apply text-black pl-2 text-base whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300;
 }
 
 .sidebar.open li a .links_name {
-  opacity: 1;
-  pointer-events: auto;
+  @apply opacity-100 pointer-events-auto;
 }
 
 .sidebar li a:hover .links_name,
 .sidebar li a:hover i {
-  transition: all 0.5s ease;
-  color: var(--bg-color);
-}
-
-.sidebar li router-link {
-  display: flex;
-  height: 100%;
-  width: 100%;
-  border-radius: 12px;
-  align-items: center;
-  text-decoration: none;
-  transition: all 0.4s ease;
-  background: var(--bg-color);
-}
-
-.sidebar li router-link:hover {
-  background: var(--menu-items-hover-color);
-}
-
-.sidebar li router-link .links_name {
-  color: var(--menu-items-text-color);
-  font-size: 15px;
-  font-weight: 400;
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-  transition: 0.4s;
+  @apply transition-all ease-linear duration-200 text-primary;
 }
 
 .sidebar.open li router-link .links_name {
-  opacity: 1;
-  pointer-events: auto;
+  @apply opacity-100 pointer-events-auto;
 }
 
 .sidebar li router-link:hover .links_name,
 .sidebar li router-link:hover i {
-  transition: all 0.5s ease;
-  color: var(--bg-color);
-}
-
-.sidebar li i {
-  height: 50px;
-  line-height: 50px;
-  font-size: 18px;
-  border-radius: 12px;
+  @apply transition-all ease-linear duration-300 text-primary;
 }
 
 .sidebar div img {
-  height: 45px;
-  width: 45px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-right: 10px;
+  @apply h-12 w-12 object-cover rounded-md mr-2;
 }
 
 .my-scroll-active {
-  overflow-y: auto;
+  @apply overflow-y-auto;
+}
+
+.tooltip {
+  @apply absolute z-[3] bg-transparent shadow-xl shadow-primary/50 text-primary py-1 px-3 rounded-md text-base opacity-0 whitespace-nowrap pointer-events-none duration-0;
+}
+
+.tooltip.active {
+  @apply opacity-100 pointer-events-auto transition-all ease-linear duration-300 translate-y-1/4;
+}
+
+.sidebar.open li .tooltip {
+  @apply hidden;
 }
 
 #my-scroll {
-  overflow-y: auto;
   height: calc(100% - 60px);
+  @apply overflow-y-auto;
 }
 
 #my-scroll::-webkit-scrollbar {
-  display: none;
+  @apply hidden;
 }
 </style>
