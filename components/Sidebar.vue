@@ -25,7 +25,7 @@
       style="max-height: calc(100% - 60px)"
     >
       <div id="my-scroll" class="px-1 md:px-4">
-        <ul class="nav-list" style="overflow: visible">
+        <ul class="nav-list overflow-visible">
           <li
             v-for="(menuItem, index) in menuItems"
             :key="index"
