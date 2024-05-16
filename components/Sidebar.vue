@@ -91,7 +91,7 @@ const menuItems: Array<{
     link: "#",
     name: "Saved",
     tooltip: "Saved",
-    icon: "akar-icons:dashboard",
+    icon: "fa-regular:heart",
   },
 ];
 
