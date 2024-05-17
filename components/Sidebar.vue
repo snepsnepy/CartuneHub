@@ -34,9 +34,12 @@
             <router-link :to="menuItem.link!">
               <Icon class="bx iconify" :name="menuItem.icon!" />
               <span class="links_name">{{ menuItem.name }}</span>
-              <span :data-target="'links_' + index" class="tooltip">{{
-                menuItem.tooltip || menuItem.name
-              }}</span>
+              <span
+                v-show="tooltipActive"
+                :data-target="'links_' + index"
+                class="tooltip"
+                >{{ menuItem.tooltip || menuItem.name }}</span
+              >
             </router-link>
           </li>
         </ul>
@@ -57,12 +60,10 @@ defineProps<{
 }>();
 
 onMounted(() => {
-  document.body.style.paddingLeft = menuClosedPaddingLeftBody;
   tooltipAttached();
 });
 
 const isOpened = ref(false);
-const menuClosedPaddingLeftBody = "78px";
 const menuItems: Array<{
   link: string;
   name: string;
@@ -99,18 +100,21 @@ const toggleSidebar = () => {
   isOpened.value = !isOpened.value;
 };
 
+const tooltipActive = ref(false);
+
 const tooltipAttached = () => {
   const tooltips = document.querySelectorAll(".tooltip");
   tooltips.forEach((tooltip) => {
     document.body.appendChild(tooltip);
   });
 
-  document.querySelectorAll(".tooltip").forEach((tooltip) => {
+  tooltips.forEach((tooltip) => {
     if (tooltip instanceof HTMLElement) {
       const targetID = tooltip.dataset.target;
       const target = document.querySelector(`#${targetID}`);
       if (!target) return;
       target.addEventListener("mouseenter", () => {
+        tooltipActive.value = true;
         const targetPosition = target.getBoundingClientRect();
         if (isOpened.value) return;
         tooltip.style.top = `${targetPosition.top + window.scrollY}px`;
@@ -120,6 +124,7 @@ const tooltipAttached = () => {
         tooltip.classList.add("active");
       });
       target.addEventListener("mouseleave", () => {
+        tooltipActive.value = false;
         tooltip.classList.remove("active");
       });
     }
@@ -129,7 +134,7 @@ const tooltipAttached = () => {
 
 <style scoped>
 .sidebar {
-  @apply flex flex-col fixed w-14 h-full left-0 top-0 md:left-8 md:top-1/4 md:min-h-min md:h-fit md:w-20 md:rounded-3xl bg-primary  z-[99] transition-all ease-linear duration-300;
+  @apply flex flex-col fixed w-14 h-full left-0 top-0 md:left-8 md:top-1/4 md:min-h-min md:h-fit md:w-20 md:rounded-3xl bg-primary  z-[99] transition-all ease-linear duration-300 shadow-2xl;
 }
 
 .sidebar.open {

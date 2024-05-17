@@ -7,6 +7,8 @@
 }
 
 html,
-body {
-  @apply font-mukta bg-cover bg-fixed bg-center bg-no-repeat bg-jdm-background h-full;
+body,
+#__nuxt,
+#__layout {
+  @apply [&::-webkit-scrollbar]:hidden bg-jdm-background bg-cover;
 }
