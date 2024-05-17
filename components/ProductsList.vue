@@ -53,9 +53,11 @@
           <!-- Image -->
           <figure>
             <img
-              src="/public/img/background.png"
+              src="/public/img/compressed.jpg"
+              width="100px"
+              height="100px"
               alt="Shoes"
-              class="rounded-t-xl"
+              class="rounded-t-xl w-full rounded-b-2xl"
             />
           </figure>
 
@@ -69,7 +71,7 @@
             <h4 class="text-lg font-medium text-primary">
               {{ item.title }}
             </h4>
-            <p class="text-sm text-base-content">{{ item.phoneNo }}</p>
+            <p class="text-sm text-primary-content">{{ item.phoneNo }}</p>
             <a
               :href="`mailto:${item.email}`"
               class="flex items-center justify-center gap-2 py-4 text-sm underline-offset-4 text-base-content hover:text-violet-500 hover:underline transition-colors duration-300"
