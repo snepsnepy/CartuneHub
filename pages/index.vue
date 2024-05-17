@@ -1,7 +1,7 @@
 <template>
   <ClientOnly>
     <div
-      class="w-full mx-auto py-10 px-16 h-full rounded-3xl overflow-scroll [&::-webkit-scrollbar]:hidden bg-black/70 shadow-2xl"
+      class="w-full mx-auto py-10 px-16 h-full rounded-3xl overflow-scroll [&::-webkit-scrollbar]:hidden bg-black/70 shadow-md shadow-black"
     >
       <ProductsList />
     </div>

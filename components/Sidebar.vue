@@ -134,7 +134,7 @@ const tooltipAttached = () => {
 
 <style scoped>
 .sidebar {
-  @apply flex flex-col fixed w-14 h-full left-0 top-0 md:left-8 md:top-1/4 md:min-h-min md:h-fit md:w-20 md:rounded-3xl bg-primary  z-[99] transition-all ease-linear duration-300 shadow-2xl;
+  @apply flex flex-col fixed w-14 h-full left-0 top-0 md:left-8 md:top-1/4 md:min-h-min md:h-fit md:w-20 md:rounded-3xl bg-primary  z-[99] transition-all ease-linear duration-300 shadow-black shadow-md;
 }
 
 .sidebar.open {
