@@ -48,18 +48,10 @@
         <div
           v-for="item in sortedItems"
           :key="item.title"
-          class="font-sans rounded-xl hover:shadow-lg hover:shadow-slate-300/20 transition-all duration-300 shadow-lg w-full bg-black/50 ring-2 ring-white/20 backdrop-blur-sm"
+          class="font-sans rounded-xl hover:shadow-md hover:shadow-slate-300/20 transition-all duration-300 shadow-md w-full bg-black/50 ring-1 ring-white/20"
         >
           <!-- Image -->
-          <figure>
-            <img
-              src="/public/img/compressed.jpg"
-              width="100px"
-              height="100px"
-              alt="Shoes"
-              class="rounded-t-xl w-full rounded-b-2xl"
-            />
-          </figure>
+          <NuxtImg src="/img/compressed.jpg" class="rounded-2xl" />
 
           <!-- Title -->
           <div class="flex justify-center text-base-content">
@@ -115,6 +107,8 @@ const sortedItems = computed(() => {
   });
 });
 
-const { data } = await supabase.from("items").select();
-tableData.value = data;
+onMounted(async () => {
+  const { data } = await supabase.from("items").select();
+  tableData.value = data;
+});
 </script>
