@@ -3,16 +3,23 @@
     <div v-if="label" class="flex pb-2 text-base-content text-sm">
       {{ label }}<span v-if="required" class="text-error">&nbsp*</span>
     </div>
-    <input
-      :type="type"
-      v-model="modelValue"
-      :placeholder="placeholder"
-      class="input rounded-3xl input-bordered w-full bg-base-content ring-1 ring-base-content/30 bg-base-content/5 text-base-content focus:border-primary-hover focus:border-2"
+
+    <label
+      class="input flex items-center gap-2 rounded-3xl w-full bg-base-content ring-1 ring-base-content/30 bg-base-content/5 text-base-content"
       :class="{
         'border-error border-2 focus:border-error': invalid,
         'border-success border-2': !invalid && modelValue?.length,
       }"
-    />
+    >
+      <input
+        :type="type"
+        v-model="modelValue"
+        :placeholder="placeholder"
+        class="grow"
+      />
+      <Icon name="fa:search" class="text-gray-400" />
+    </label>
+
     <div v-if="invalid" class="flex py-1 text-error text-xs">
       {{ errorMessage }}
     </div>
@@ -38,7 +45,7 @@ watch(modelValue, () => emit("update:value", modelValue.value));
 </script>
 
 <style scoped>
-input:focus {
-  @apply outline-none bg-black/15 text-base-content;
+.input:focus-within {
+  @apply outline-[#C4D2BD] bg-black/20;
 }
 </style>

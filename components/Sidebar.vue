@@ -12,8 +12,8 @@
       <Icon
         :name="isOpened ? 'heroicons-solid:menu-alt-3' : 'heroicons-solid:menu'"
         :class="{
-          'mr-2 text-black': isOpened,
-          'mx-4 md:mx-7 text-black': !isOpened,
+          'mr-2 text-base-content': isOpened,
+          'mx-4 md:mx-7 text-base-content ': !isOpened,
         }"
         id="btn"
         @click="toggleSidebar"
@@ -134,7 +134,7 @@ const tooltipAttached = () => {
 
 <style scoped>
 .sidebar {
-  @apply flex flex-col fixed w-14 h-full left-0 top-0 md:left-8 md:top-1/4 md:min-h-min md:h-fit md:w-20 md:rounded-3xl bg-primary  z-[99] transition-all ease-linear duration-300 shadow-black shadow-md;
+  @apply flex flex-col fixed w-14 h-full left-0 top-0 md:left-8 md:top-1/4 md:min-h-min md:h-fit md:w-20 md:rounded-3xl bg-black/20 backdrop-blur-xl  z-[99] transition-all ease-linear duration-300 shadow-secondary/20 shadow-md ring-1 ring-white/20;
 }
 
 .sidebar.open {
@@ -150,7 +150,7 @@ const tooltipAttached = () => {
 }
 
 .sidebar .logo-details .logo_name {
-  @apply text-black text-base font-bold opacity-0 transition-all ease-linear duration-300;
+  @apply text-base-content text-base font-bold opacity-0 transition-all ease-linear duration-300;
 }
 
 .sidebar.open .logo-details .iconify,
@@ -168,7 +168,7 @@ const tooltipAttached = () => {
 
 .sidebar .iconify,
 .sidebar i {
-  @apply text-black bg-transparent min-w-6 ml-3 text-center;
+  @apply text-base-content bg-transparent min-w-6 ml-3 text-center;
 }
 
 .sidebar li .iconify,
@@ -185,15 +185,15 @@ const tooltipAttached = () => {
 }
 
 .sidebar li a {
-  @apply flex bg-transparent  h-full w-full items-center no-underline transition-all ease-linear duration-300 rounded-3xl sm:w-full;
+  @apply flex bg-transparent h-full w-full items-center no-underline transition-all ease-linear duration-300 rounded-3xl sm:w-full;
 }
 
 .sidebar li a:hover {
-  @apply bg-base-content;
+  @apply bg-primary;
 }
 
 .sidebar li a .links_name {
-  @apply text-black pl-2 text-base whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300;
+  @apply text-base-content pl-2 text-base whitespace-nowrap opacity-0 pointer-events-none transition-all duration-300;
 }
 
 .sidebar.open li a .links_name {
@@ -202,7 +202,7 @@ const tooltipAttached = () => {
 
 .sidebar li a:hover .links_name,
 .sidebar li a:hover i {
-  @apply transition-all ease-linear duration-200 text-primary;
+  @apply transition-all ease-linear duration-200 text-base-content;
 }
 
 .sidebar.open li router-link .links_name {
@@ -223,7 +223,7 @@ const tooltipAttached = () => {
 }
 
 .tooltip {
-  @apply absolute z-[3] bg-transparent shadow-xl shadow-primary/50 text-primary py-1 px-3 rounded-md text-base opacity-0 whitespace-nowrap pointer-events-none duration-0;
+  @apply absolute z-[3] bg-black/20 backdrop-blur-xl shadow-md ring-1 ring-white/20 shadow-secondary/20 text-base-content py-1 px-3 rounded-md text-base opacity-0 whitespace-nowrap pointer-events-none duration-0;
 }
 
 .tooltip.active {

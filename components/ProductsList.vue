@@ -1,23 +1,28 @@
 <template>
   <!-- Title -->
-  <div class="text-center">
-    <h1 class="mb-2 font-sans text-4xl font-bold text-base-content">
-      Listed Items
-    </h1>
-    <p class="font-sans text-lg text-base-content">
-      A filterable list of products for testing puropses
-    </p>
+  <div class="flex mb-10">
+    <!-- Title & Description -->
+    <div class="w-full flex items-center my-auto">
+      <p class="font-sans text-3xl font-bold text-base-content h-full">
+        CAR PARTS
+      </p>
+    </div>
+
+    <!-- Search bar -->
+    <div class="w-full flex items-center">
+      <Input
+        type="text"
+        placeholder="Search items.."
+        v-model:value="filter"
+        class="w-full h-12 inline-flex items-center rounded-xl"
+      />
+    </div>
   </div>
 
   <!-- Search -->
-  <div class="relative flex w-full mt-10 mb-20">
-    <Input
-      type="text"
-      placeholder="Search items.."
-      v-model:value="filter"
-      class="w-full h-12 inline-flex items-center rounded-xl"
-    />
-  </div>
+  <!-- <div class="w-full mt-10 mb-10">
+    
+  </div> -->
 
   <!-- List wrapper -->
   <div class="relative">
@@ -36,7 +41,7 @@
         </div>
       </div>
     </div>
-    <div v-else class="relative grid sm:grid-cols-3 gap-6">
+    <div v-else>
       <TransitionGroup
         enter-active-class="transform-gpu"
         enter-from-class="opacity-0 -translate-x-full"
@@ -46,31 +51,26 @@
         leave-to-class="opacity-0 -translate-x-full"
       >
         <div
+          class="indicator w-full transition-all duration-300 my-2"
           v-for="item in sortedItems"
           :key="item.title"
-          class="font-sans rounded-xl hover:shadow-md hover:shadow-slate-300/20 transition-all duration-300 shadow-md w-full bg-black/50 ring-1 ring-white/20"
         >
-          <!-- Image -->
-          <NuxtImg src="/img/compressed.jpg" class="rounded-2xl" />
-
-          <!-- Title -->
-          <div class="flex justify-center text-base-content">
-            {{ item.category }}
-          </div>
-
-          <!-- Details -->
-          <div class="text-center mt-4">
-            <h4 class="text-lg font-medium text-primary">
-              {{ item.title }}
-            </h4>
-            <p class="text-sm text-primary-content">{{ item.phoneNo }}</p>
-            <a
-              :href="`mailto:${item.email}`"
-              class="flex items-center justify-center gap-2 py-4 text-sm underline-offset-4 text-base-content hover:text-violet-500 hover:underline transition-colors duration-300"
+          <div class="indicator-item indicator-bottom">
+            <span
+              class="indicator-item indicator-bottom indicator-end badge bg-[#BFA5A7] ring-1 ring-black/10 p-4 font-bold text-[#574143]"
+              >$1200</span
             >
-              <Icon name="lucide:mail" class="w-4 h-4" />
-              <span>{{ item.email }}</span>
-            </a>
+          </div>
+          <div
+            class="card card-side bg-white/10 hover:bg-white/15 ring-2 ring-black/5 hover:shadow-md hover:shadow-white/20 w-full"
+          >
+            <figure>
+              <img src="/public/img/gtr.jpg" class="w-50 h-40" alt="Movie" />
+            </figure>
+            <div class="card-body w-full">
+              <h2 class="card-title text-[#F7F5DD]">{{ item.title }}</h2>
+              <p class="text-neutral-content">{{ item.phoneNo }}</p>
+            </div>
           </div>
         </div>
       </TransitionGroup>
@@ -112,3 +112,14 @@ onMounted(async () => {
   tableData.value = data;
 });
 </script>
+
+<style scoped>
+.indicator :where(.indicator-item.indicator-end) {
+  --tw-translate-x: 10%;
+  --tw-translate-y: 20%;
+}
+
+.badge {
+  @apply border-none;
+}
+</style>

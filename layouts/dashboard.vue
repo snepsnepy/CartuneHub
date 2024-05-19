@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen py-10 mr-8 ml-[70px]">
+  <div class="h-screen py-4 mr-4 ml-[70px]">
     <Sidebar />
     <slot />
   </div>
