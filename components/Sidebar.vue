@@ -1,8 +1,8 @@
 <template>
-  <div :class="{ sidebar: true, open: isOpened }" class="py-4">
+  <div :class="{ sidebar: true, open: store.isSidebarOpened }" class="py-4">
     <div class="logo-details pl-4">
       <img
-        v-if="isOpened"
+        v-if="store.isSidebarOpened"
         src="/img/logo.png"
         alt="menu-logo"
         class="menu-logo"
@@ -10,13 +10,17 @@
 
       <div class="logo_name">CARTUNEHUB</div>
       <Icon
-        :name="isOpened ? 'heroicons-solid:menu-alt-3' : 'heroicons-solid:menu'"
+        :name="
+          store.isSidebarOpened
+            ? 'heroicons-solid:menu-alt-3'
+            : 'heroicons-solid:menu'
+        "
         :class="{
-          'mr-2 text-base-content': isOpened,
-          'mx-4 md:mx-7 text-base-content ': !isOpened,
+          'mr-2 text-base-content': store.isSidebarOpened,
+          'mx-4 md:mx-7 text-base-content ': !store.isSidebarOpened,
         }"
         id="btn"
-        @click="toggleSidebar"
+        @click="store.toggleSidebar"
       />
     </div>
 
@@ -51,6 +55,8 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 
+const store = useMainStore();
+
 defineProps<{
   profileImg?: string;
   profileName?: string;
@@ -63,7 +69,6 @@ onMounted(() => {
   tooltipAttached();
 });
 
-const isOpened = ref(false);
 const menuItems: Array<{
   link: string;
   name: string;
@@ -96,10 +101,6 @@ const menuItems: Array<{
   },
 ];
 
-const toggleSidebar = () => {
-  isOpened.value = !isOpened.value;
-};
-
 const tooltipActive = ref(false);
 
 const tooltipAttached = () => {
@@ -116,7 +117,7 @@ const tooltipAttached = () => {
       target.addEventListener("mouseenter", () => {
         tooltipActive.value = true;
         const targetPosition = target.getBoundingClientRect();
-        if (isOpened.value) return;
+        if (store.isSidebarOpened) return;
         tooltip.style.top = `${targetPosition.top + window.scrollY}px`;
         tooltip.style.left = `${
           targetPosition.left + targetPosition.width + 20
