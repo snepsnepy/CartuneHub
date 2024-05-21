@@ -49,7 +49,7 @@
       <!-- Buttons -->
       <div class="mt-14 text-center">
         <Button
-          class="btn border-0 w-full rounded-3xl bg-primary hover:bg-primary-hover text-base-content"
+          class="btn border-0 w-full rounded-3xl bg-primary hover:bg-primary-hover text-base-content hover:text-primary-content"
           text="Sign In"
           :on-click="signIn"
           :disabled="v$.email.$error || v$.password.$error"
@@ -60,7 +60,7 @@
           or
         </div>
         <Button
-          class="btn-default btn rounded-3xl btn-outline w-full text-text-base-content hover:bg-base-content"
+          class="btn-default btn rounded-3xl btn-outline w-full text-base-content hover:bg-base-content hover:text-neutral"
           text="Sign In with Google"
           icon-name="devicon:google"
         />
@@ -105,5 +105,9 @@ const signIn = async () => {
 .divider:before,
 .divider:after {
   @apply bg-base-content h-px;
+}
+
+.btn-outline {
+  @apply border border-base-content;
 }
 </style>

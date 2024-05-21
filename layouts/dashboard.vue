@@ -1,6 +1,6 @@
 <template>
   <div class="h-screen lg:py-4 lg:mr-4 lg:ml-[70px]">
-    <Sidebar v-if="isDesktop" />
+    <Sidebar />
     <slot />
   </div>
 </template>

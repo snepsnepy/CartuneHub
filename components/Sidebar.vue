@@ -1,5 +1,11 @@
 <template>
-  <div :class="{ sidebar: true, open: store.isSidebarOpened }" class="py-4">
+  <div
+    :class="{
+      sidebar: true,
+      open: store.isSidebarOpened,
+    }"
+    class="py-4"
+  >
     <div class="logo-details pl-4">
       <img
         v-if="store.isSidebarOpened"
@@ -17,7 +23,7 @@
         "
         :class="{
           'mr-2 text-base-content': store.isSidebarOpened,
-          'mx-4 md:mx-7 text-base-content ': !store.isSidebarOpened,
+          'mx-4 lg:mx-7 text-base-content ': !store.isSidebarOpened,
         }"
         id="btn"
         @click="store.toggleSidebar"
@@ -28,7 +34,7 @@
       class="flex flex-col justify-between flex-grow"
       style="max-height: calc(100% - 60px)"
     >
-      <div id="my-scroll" class="px-1 md:px-4">
+      <div id="my-scroll" class="px-1 lg:px-4">
         <ul class="nav-list overflow-visible">
           <li
             v-for="(menuItem, index) in menuItems"
@@ -135,11 +141,11 @@ const tooltipAttached = () => {
 
 <style scoped>
 .sidebar {
-  @apply flex flex-col fixed w-14 h-full left-0 top-0 md:left-8 md:top-1/4 md:min-h-min md:h-fit md:w-20 md:rounded-3xl bg-black/20 backdrop-blur-xl  z-[99] transition-all ease-linear duration-300 shadow-secondary/20 shadow-md ring-1 ring-white/20;
+  @apply hidden lg:flex flex-col fixed w-14 h-full left-0 top-0 lg:left-8 lg:top-1/4 lg:min-h-min lg:h-fit lg:w-20 lg:rounded-3xl bg-black/20 backdrop-blur-xl z-[99] transition-all ease-linear duration-300 shadow-secondary/20 shadow-md ring-1 ring-white/20;
 }
 
 .sidebar.open {
-  @apply w-64;
+  @apply w-64 flex;
 }
 
 .sidebar .logo-details {

@@ -9,6 +9,13 @@
         >
           Parts Marketplace
         </p>
+        <button
+          v-if="!isDesktop"
+          class="btn bg-primary text-base-content"
+          @click="useMainStore().toggleSidebar"
+        >
+          Toggle
+        </button>
       </div>
 
       <!-- Search bar -->
@@ -74,7 +81,7 @@
                 <figure>
                   <img
                     src="/public/img/gtr.jpg"
-                    class="w-50 h-40"
+                    class="w-30 h-32"
                     alt="Movie"
                   />
                 </figure>
