@@ -69,7 +69,7 @@
       <div class="mt-14 text-center">
         <Button
           text="Create Account"
-          class="btn border-0 w-full rounded-3xl bg-primary hover:bg-primary-hover text-black hover:text-black"
+          class="btn border-0 w-full rounded-3xl bg-primary hover:bg-primary-hover text-base-content hover:text-base-content"
           :on-click="signUp"
           :disabled="
             v$.email.$error || v$.password.$error || v$.confirmPassword.$error

@@ -1,32 +1,11 @@
 <template>
-  <div class="h-screen py-4 mr-4 ml-[70px]">
-    <Sidebar />
+  <div class="h-screen lg:py-4 lg:mr-4 lg:ml-[70px]">
+    <Sidebar v-if="isDesktop" />
     <slot />
   </div>
 </template>
-import
 
-<script setup lang="ts">
-enum Routes {
-  HOME = "/",
-  PRODUCTS = "/Products",
-}
-
-const route = useRoute();
-const routeName = ref("");
-
-// Needed to save routeName to keep the active state after page refresh
-onMounted(() => {
-  routeName.value = route.fullPath;
-});
-
-watch(
-  () => route.fullPath,
-  () => {
-    routeName.value = "";
-  }
-);
-</script>
+<script setup lang="ts"></script>
 
 <style scoped>
 :where(

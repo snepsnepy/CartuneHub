@@ -49,16 +49,18 @@
       <!-- Buttons -->
       <div class="mt-14 text-center">
         <Button
-          class="btn border-0 w-full rounded-3xl bg-primary hover:bg-primary-hover text-primary-content"
+          class="btn border-0 w-full rounded-3xl bg-primary hover:bg-primary-hover text-base-content"
           text="Sign In"
           :on-click="signIn"
           :disabled="v$.email.$error || v$.password.$error"
         />
-        <div class="divider flex w-full justify-center text-center text-white">
+        <div
+          class="divider flex w-full justify-center text-center text-base-content"
+        >
           or
         </div>
         <Button
-          class="btn-default btn rounded-3xl btn-outline w-full text-white hover:bg-white"
+          class="btn-default btn rounded-3xl btn-outline w-full text-text-base-content hover:bg-base-content"
           text="Sign In with Google"
           icon-name="devicon:google"
         />
@@ -102,6 +104,6 @@ const signIn = async () => {
 <style scoped>
 .divider:before,
 .divider:after {
-  @apply bg-white h-px;
+  @apply bg-base-content h-px;
 }
 </style>

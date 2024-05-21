@@ -1,14 +1,12 @@
 <template>
   <ClientOnly>
     <div
-      class="w-full flex mx-auto pr-4 pl-14 h-full gap-4 [&::-webkit-scrollbar]:hidden"
+      class="w-full flex mx-auto lg:pr-4 lg:pl-14 h-full gap-4 [&::-webkit-scrollbar]:hidden"
     >
+      <ProductsList />
+
       <div
-        class="bg-black/20 rounded-3xl p-10 w-2/3 overflow-scroll [&::-webkit-scrollbar]:hidden backdrop-blur-2xl ring-1 ring-white/20 shadow-secondary/20 shadow-lg"
-      >
-        <ProductsList />
-      </div>
-      <div
+        v-if="isDesktop"
         class="bg-black/20 rounded-3xl w-1/3 backdrop-blur-2xl ring-1 ring-white/20 shadow-secondary/20 shadow-md"
       ></div>
     </div>

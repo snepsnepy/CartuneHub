@@ -48,4 +48,8 @@ watch(modelValue, () => emit("update:value", modelValue.value));
 .input:focus-within {
   @apply outline-[#C4D2BD] bg-black/20;
 }
+
+::placeholder {
+  @apply text-neutral-content;
+}
 </style>
