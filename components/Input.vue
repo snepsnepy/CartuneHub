@@ -11,13 +11,13 @@
         'border-success border-2': !invalid && modelValue?.length,
       }"
     >
+      <Icon name="fa:search" class="text-neutral-content w-4 h-4" />
       <input
         :type="type"
         v-model="modelValue"
         :placeholder="placeholder"
         class="grow"
       />
-      <Icon name="fa:search" class="text-gray-400" />
     </label>
 
     <div v-if="invalid" class="flex py-1 text-error text-xs">
@@ -45,6 +45,9 @@ watch(modelValue, () => emit("update:value", modelValue.value));
 </script>
 
 <style scoped>
+.input {
+  @apply shadow-secondary/20 shadow-md;
+}
 .input:focus-within {
   @apply outline-[#C4D2BD] bg-black/20;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen lg:py-4 lg:mr-4 lg:ml-[70px]">
+  <div class="h-screen lg:py-4 lg:ml-14">
     <Sidebar />
     <slot />
   </div>

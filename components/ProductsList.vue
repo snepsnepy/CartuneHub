@@ -4,15 +4,13 @@
     <div class="flex pt-4 lg:pt-0 mb-4">
       <!-- Title & Description -->
       <div class="w-full flex items-center my-auto">
-        <p
-          class="font-sans text-md lg:text-2xl font-bold text-base-content h-full"
-        >
+        <p class="font-sans text-base-content text-xl tracking-wider h-full">
           Parts Marketplace
         </p>
         <button
           v-if="!isDesktop"
           class="btn bg-primary text-base-content"
-          @click="useMainStore().toggleSidebar"
+          @click="store.toggleSidebar"
         >
           Toggle
         </button>
@@ -22,20 +20,16 @@
       <div class="w-full flex items-center">
         <Input
           type="text"
-          placeholder="Search items.."
+          placeholder="Start searching here ..."
           v-model:value="filter"
           class="w-full h-12 inline-flex items-center rounded-xl backdrop-blur-2xl"
         />
       </div>
     </div>
+
     <div
       class="rounded-3xl p-4 overflow-scroll h-full [&::-webkit-scrollbar]:hidden backdrop-blur-2xl ring-1 ring-white/20 shadow-secondary/20 shadow-lg"
     >
-      <!-- Search -->
-      <!-- <div class="w-full mt-10 mb-10">
-    
-  </div> -->
-
       <!-- List wrapper -->
       <div class="relative">
         <!-- Placeholder -->
@@ -86,7 +80,7 @@
                   />
                 </figure>
                 <div class="card-body w-full">
-                  <h2 class="card-title text-[#F7F5DD]">{{ item.title }}</h2>
+                  <h2 class="card-title text-base-content">{{ item.title }}</h2>
                   <p class="text-neutral-content">{{ item.phoneNo }}</p>
                 </div>
               </div>
@@ -101,6 +95,7 @@
 <script setup lang="ts">
 import { createClient } from "@supabase/supabase-js";
 
+const store = useGlobalStore();
 const config = useRuntimeConfig();
 const supabase = createClient(
   config.public.SUPABASE_URL,
@@ -128,7 +123,10 @@ const sortedItems = computed(() => {
 });
 
 onMounted(async () => {
-  const { data } = await supabase.from("items").select();
+  const { data } = await supabase
+    .from("items")
+    .select()
+    .eq("userId", useSupabaseUser().value?.id);
   tableData.value = data;
 });
 </script>

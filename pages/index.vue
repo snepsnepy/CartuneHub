@@ -7,8 +7,10 @@
 
       <div
         v-if="isDesktop"
-        class="bg-black/20 rounded-3xl w-1/3 backdrop-blur-2xl ring-1 ring-white/20 shadow-secondary/20 shadow-md"
-      ></div>
+        class="bg-black/20 rounded-3xl p-4 py-4 w-1/3 backdrop-blur-2xl ring-1 ring-white/20 shadow-secondary/20 shadow-md"
+      >
+        <ProfileOverview />
+      </div>
     </div>
   </ClientOnly>
 </template>
@@ -23,5 +25,10 @@ definePageMeta({
 <style scoped>
 .card {
   @apply bg-black/25;
+}
+
+.divider:before,
+.divider:after {
+  @apply bg-neutral-content h-px;
 }
 </style>
