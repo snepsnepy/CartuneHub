@@ -8,7 +8,7 @@
       class="flex flex-col w-full p-4 mt-2 gap-y-4 backdrop-blur-2xl ring-1 ring-white/20 bg-white/10 rounded-3xl"
     >
       <div class="flex m-auto items-center justify-between w-full">
-        <p class="text-primary-content text-2xl font-bold">
+        <p class="text-base-content text-2xl font-bold">
           Savulescu <br />
           Mihnea Alexandru
         </p>
@@ -43,43 +43,45 @@
 
       <div class="flex flex-col gap-y-1">
         <div class="flex w-full m-auto items-center gap-x-1">
-          <p class="text-primary-content text-sm">snepsoftware@gmail.com</p>
+          <p class="text-neutral-content text-sm">snepsoftware@gmail.com</p>
 
           <Icon
             name="icon-park-solid:check-one"
             class="w-4 h-4 text-secondary"
           />
         </div>
-        <!-- <div class="flex w-full m-auto items-center gap-x-1">
-            <p class="text-primary-content text-sm">+40 726 374 419</p>
-
-            <Icon
-              name="emojione-v1:flag-for-romania"
-              class="w-4 h-4 text-secondary"
-            />
-          </div> -->
       </div>
 
       <div
         class="flex ring-1 ring-white/20 bg-black/40 justify-around rounded-3xl py-4"
       >
         <div class="text-center">
-          <p class="text-primary-content">Listings</p>
+          <p class="text-base-content">Listings</p>
           <p class="text-primary text-2xl font-bold">10</p>
         </div>
         <div class="text-center">
-          <p class="text-primary-content">Sold</p>
+          <p class="text-base-content">Sold</p>
           <p class="text-primary text-2xl font-bold">3</p>
         </div>
         <div class="text-center">
-          <p class="text-primary-content">Saved</p>
+          <p class="text-base-content">Saved</p>
           <p class="text-primary text-2xl font-bold">5</p>
         </div>
       </div>
+      <button
+        class="btn glass bg-primary text-base-content text-md rounded-3xl hover:bg-primary-hover"
+      >
+        I want to sell
+      </button>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup></script>
 
-<style></style>
+<style scoped>
+.divider:before,
+.divider:after {
+  @apply bg-primary-content/20 h-px;
+}
+</style>
