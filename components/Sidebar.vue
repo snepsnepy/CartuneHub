@@ -141,7 +141,7 @@ const tooltipAttached = () => {
 
 <style scoped>
 .sidebar {
-  @apply hidden lg:flex flex-col fixed w-14 h-full left-0 top-0 lg:left-4 lg:top-1/4 lg:min-h-min lg:h-fit lg:w-20 lg:rounded-3xl bg-black/20 backdrop-blur-xl z-[99] transition-all ease-linear duration-300 shadow-secondary/20 shadow-md ring-1 ring-white/20;
+  @apply hidden lg:flex flex-col fixed w-14 h-full left-0 top-0 lg:left-4 lg:top-1/4 lg:min-h-min lg:h-fit lg:w-20 lg:rounded-3xl bg-white/5 backdrop-blur-xl z-[99] transition-all ease-linear duration-300 shadow-secondary/20 shadow-md ring-1 ring-white/20;
 }
 
 .sidebar.open {

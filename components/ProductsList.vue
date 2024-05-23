@@ -28,7 +28,7 @@
     </div>
 
     <div
-      class="rounded-3xl p-4 overflow-scroll h-full [&::-webkit-scrollbar]:hidden backdrop-blur-2xl ring-1 ring-white/20 shadow-secondary/20 shadow-lg"
+      class="rounded-3xl p-4 overflow-scroll h-full [&::-webkit-scrollbar]:hidden bg-white/5 backdrop-blur-2xl ring-1 ring-white/20 shadow-secondary/20 shadow-lg"
     >
       <!-- List wrapper -->
       <div class="relative">
@@ -58,6 +58,22 @@
             leave-from-class="opacity-100 translate-x-0"
             leave-to-class="opacity-0 -translate-x-full"
           >
+            <!-- <div class="card w-fit glass shadow-xl">
+              <figure class="px-10 pt-10">
+                <img
+                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+                  alt="Shoes"
+                  class="rounded-xl"
+                />
+              </figure>
+              <div class="card-body items-center text-center">
+                <h2 class="card-title">Shoes!</h2>
+                <p>If a dog chews shoes whose shoes does he choose?</p>
+                <div class="card-actions">
+                  <button class="btn btn-primary">Buy Now</button>
+                </div>
+              </div>
+            </div> -->
             <div
               class="indicator w-full transition-all duration-300 my-2"
               v-for="item in sortedItems"

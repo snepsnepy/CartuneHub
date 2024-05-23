@@ -1,11 +1,7 @@
 <template>
   <div>
-    <p class="px-2 text-base-content text-md tracking-wider">
-      Profile Overview
-    </p>
-    <div class="divider m-0"></div>
     <div
-      class="flex flex-col w-full p-4 mt-2 gap-y-4 backdrop-blur-2xl ring-1 ring-white/20 bg-white/10 rounded-3xl"
+      class="flex flex-col w-full p-4 gap-y-4 backdrop-blur-2xl ring-1 ring-white/20 bg-white/5 rounded-3xl"
     >
       <div class="flex m-auto items-center justify-between w-full">
         <p class="text-base-content text-2xl font-bold">

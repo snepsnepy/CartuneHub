@@ -5,7 +5,7 @@
     </div>
 
     <label
-      class="input flex items-center gap-2 rounded-3xl w-full bg-base-content ring-1 ring-base-content/30 bg-base-content/5 text-base-content"
+      class="input flex items-center gap-2 rounded-3xl w-full bg-base-content ring-1 ring-base-content/30 bg-white/5 hover:bg-black/5 text-base-content"
       :class="{
         'border-error border-2 focus:border-error': invalid,
         'border-success border-2': !invalid && modelValue?.length,
