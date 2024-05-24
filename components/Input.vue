@@ -45,9 +45,6 @@ watch(modelValue, () => emit("update:value", modelValue.value));
 </script>
 
 <style scoped>
-.input {
-  @apply shadow-secondary/20 shadow-md;
-}
 .input:focus-within {
   @apply outline-[#C4D2BD] bg-black/20;
 }

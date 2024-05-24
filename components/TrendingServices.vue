@@ -161,4 +161,8 @@
 .rating :where(input) {
   @apply w-4 h-4;
 }
+
+.hero-content {
+  @apply py-1;
+}
 </style>
