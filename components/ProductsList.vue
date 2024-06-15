@@ -50,58 +50,43 @@
           </div>
         </div>
         <div v-else>
-          <TransitionGroup
-            enter-active-class="transform-gpu"
-            enter-from-class="opacity-0 -translate-x-full"
-            enter-to-class="opacity-100 translate-x-0"
-            leave-active-class="absolute transform-gpu"
-            leave-from-class="opacity-100 translate-x-0"
-            leave-to-class="opacity-0 -translate-x-full"
-          >
-            <!-- <div class="card w-fit glass shadow-xl">
-              <figure class="px-10 pt-10">
-                <img
-                  src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-                  alt="Shoes"
-                  class="rounded-xl"
-                />
-              </figure>
-              <div class="card-body items-center text-center">
-                <h2 class="card-title">Shoes!</h2>
-                <p>If a dog chews shoes whose shoes does he choose?</p>
-                <div class="card-actions">
-                  <button class="btn btn-primary">Buy Now</button>
-                </div>
-              </div>
-            </div> -->
-            <div
-              class="indicator w-full transition-all duration-300 my-2"
-              v-for="item in sortedItems"
-              :key="item.title"
-            >
-              <div class="indicator-item indicator-bottom">
-                <span
-                  class="indicator-item indicator-bottom indicator-end badge bg-[#BFA5A7] ring-1 ring-black/10 p-4 font-bold text-[#574143]"
-                  >$1200</span
+          <div class="flex flex-col">
+            <div class="container mx-auto p-4 flex items-center justify-center">
+              <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div
+                  class="card w-full ring-1 ring-white/20 bg-white/5"
+                  v-for="item in filteredItems"
+                  :key="item.title"
                 >
-              </div>
-              <div
-                class="card card-side bg-white/10 hover:bg-white/15 ring-2 ring-black/5 hover:shadow-md hover:shadow-white/20 w-full"
-              >
-                <figure>
-                  <img
-                    src="/public/img/gtr.jpg"
-                    class="w-30 h-32"
-                    alt="Movie"
-                  />
-                </figure>
-                <div class="card-body w-full">
-                  <h2 class="card-title text-base-content">{{ item.title }}</h2>
-                  <p class="text-neutral-content">{{ item.phoneNo }}</p>
+                  <figure>
+                    <img
+                      src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+                      alt="Shoes"
+                    />
+                  </figure>
+                  <div class="card-body">
+                    <h2 class="card-title">
+                      {{ item.title }}
+                      <div class="badge badge-secondary">NEW</div>
+                    </h2>
+                    <p>{{ item.description }}</p>
+                    <div class="card-actions justify-end">
+                      <div class="badge badge-outline">Fashion</div>
+                      <div class="badge badge-outline">Products</div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </TransitionGroup>
+            <div class="flex w-full justify-center" v-if="loadMore">
+              <button
+                class="btn bg-primary text-primary-content hover:bg-primary-hover"
+                @click="fetchData"
+              >
+                Load more
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -118,8 +103,26 @@ const supabase = createClient(
   config.public.SUPABASE_KEY
 );
 
-const tableData = ref<any[] | null>();
+const tableData = ref<any[] | null>([]);
 const filter = ref("");
+const loadMore = ref(true);
+
+const page = ref(0);
+
+const setPage = () => (page.value += 1);
+
+const getFromAndTo = () => {
+  const ITEMS_PER_PAGE = 2;
+
+  let from = page.value * ITEMS_PER_PAGE;
+  let to = from + ITEMS_PER_PAGE;
+
+  if (page.value > 0) {
+    from += 1;
+  }
+
+  return { from, to };
+};
 
 const filteredItems = computed(() => {
   if (!filter.value) {
@@ -138,17 +141,21 @@ const sortedItems = computed(() => {
   });
 });
 
+const fetchData = async () => {
+  const { from, to } = getFromAndTo();
+  const { data } = await supabase.from("items").select("*").range(from, to);
+  loadMore.value = data?.length !== 1;
+  setPage();
+  tableData.value = [...tableData.value!, ...data!];
+};
+
 onMounted(async () => {
-  const { data } = await supabase
-    .from("items")
-    .select()
-    .eq("userId", useSupabaseUser().value?.id);
-  tableData.value = data;
+  fetchData();
 });
 </script>
 
 <style scoped>
-.indicator :where(.indicator-item.indicator-end) {
+.indicator :where(.indicator-item.indicator-start) {
   --tw-translate-x: 10%;
   --tw-translate-y: 20%;
 }
